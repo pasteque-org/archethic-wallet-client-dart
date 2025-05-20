@@ -3,10 +3,7 @@ import 'dart:async';
 import 'package:logging/logging.dart';
 
 class SingletonTask<T> {
-  SingletonTask({
-    required this.name,
-    required this.task,
-  }) {
+  SingletonTask({required this.name, required this.task}) {
     this._logger = Logger(name);
   }
 
@@ -16,7 +13,7 @@ class SingletonTask<T> {
 
   late final Logger _logger;
 
-  Future<T> run() async {
+  Future<T> run() {
     if (_completer != null) {
       _logger.info('Already running. Waiting for result...');
       return _completer!.future;

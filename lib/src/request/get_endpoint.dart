@@ -4,21 +4,20 @@ part 'get_endpoint.freezed.dart';
 part 'get_endpoint.g.dart';
 
 @freezed
-class GetEndpointResult with _$GetEndpointResult {
-  const factory GetEndpointResult({
-    required String endpointUrl,
-  }) = _GetEndpointResult;
+abstract class GetEndpointResult with _$GetEndpointResult {
+  const factory GetEndpointResult({required final String endpointUrl}) =
+      _GetEndpointResult;
   const GetEndpointResult._();
 
-  factory GetEndpointResult.fromJson(Map<String, dynamic> json) =>
+  factory GetEndpointResult.fromJson(final Map<String, dynamic> json) =>
       _$GetEndpointResultFromJson(json);
 }
 
 @freezed
-class GetEndpointRequest with _$GetEndpointRequest {
+abstract class GetEndpointRequest with _$GetEndpointRequest {
   const factory GetEndpointRequest() = _GetEndpointRequest;
   const GetEndpointRequest._();
 
-  factory GetEndpointRequest.fromJson(Map<String, dynamic> json) =>
+  factory GetEndpointRequest.fromJson(final Map<String, dynamic> json) =>
       _$GetEndpointRequestFromJson(json);
 }

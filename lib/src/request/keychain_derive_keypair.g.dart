@@ -6,30 +6,26 @@ part of 'keychain_derive_keypair.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$KeychainDeriveKeypairResultImpl _$$KeychainDeriveKeypairResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$KeychainDeriveKeypairResultImpl(
-      publicKey: json['publicKey'] as String,
-    );
+_KeychainDeriveKeypairResult _$KeychainDeriveKeypairResultFromJson(
+  Map<String, dynamic> json,
+) => _KeychainDeriveKeypairResult(publicKey: json['publicKey'] as String);
 
-Map<String, dynamic> _$$KeychainDeriveKeypairResultImplToJson(
-        _$KeychainDeriveKeypairResultImpl instance) =>
-    <String, dynamic>{
-      'publicKey': instance.publicKey,
-    };
+Map<String, dynamic> _$KeychainDeriveKeypairResultToJson(
+  _KeychainDeriveKeypairResult instance,
+) => <String, dynamic>{'publicKey': instance.publicKey};
 
-_$KeychainDeriveKeypairRequestImpl _$$KeychainDeriveKeypairRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$KeychainDeriveKeypairRequestImpl(
-      serviceName: json['serviceName'] as String,
-      index: (json['index'] as num?)?.toInt() ?? 0,
-      pathSuffix: json['pathSuffix'] as String? ?? '',
-    );
+_KeychainDeriveKeypairRequest _$KeychainDeriveKeypairRequestFromJson(
+  Map<String, dynamic> json,
+) => _KeychainDeriveKeypairRequest(
+  serviceName: json['serviceName'] as String,
+  index: (json['index'] as num?)?.toInt() ?? 0,
+  pathSuffix: json['pathSuffix'] as String? ?? '',
+);
 
-Map<String, dynamic> _$$KeychainDeriveKeypairRequestImplToJson(
-        _$KeychainDeriveKeypairRequestImpl instance) =>
-    <String, dynamic>{
-      'serviceName': instance.serviceName,
-      'index': instance.index,
-      'pathSuffix': instance.pathSuffix,
-    };
+Map<String, dynamic> _$KeychainDeriveKeypairRequestToJson(
+  _KeychainDeriveKeypairRequest instance,
+) => <String, dynamic>{
+  'serviceName': instance.serviceName,
+  'index': instance.index,
+  'pathSuffix': instance.pathSuffix,
+};

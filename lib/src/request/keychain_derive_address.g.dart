@@ -6,30 +6,26 @@ part of 'keychain_derive_address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$KeychainDeriveAddressResultImpl _$$KeychainDeriveAddressResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$KeychainDeriveAddressResultImpl(
-      address: json['address'] as String,
-    );
+_KeychainDeriveAddressResult _$KeychainDeriveAddressResultFromJson(
+  Map<String, dynamic> json,
+) => _KeychainDeriveAddressResult(address: json['address'] as String);
 
-Map<String, dynamic> _$$KeychainDeriveAddressResultImplToJson(
-        _$KeychainDeriveAddressResultImpl instance) =>
-    <String, dynamic>{
-      'address': instance.address,
-    };
+Map<String, dynamic> _$KeychainDeriveAddressResultToJson(
+  _KeychainDeriveAddressResult instance,
+) => <String, dynamic>{'address': instance.address};
 
-_$KeychainDeriveAddressRequestImpl _$$KeychainDeriveAddressRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$KeychainDeriveAddressRequestImpl(
-      serviceName: json['serviceName'] as String,
-      index: (json['index'] as num?)?.toInt() ?? 0,
-      pathSuffix: json['pathSuffix'] as String? ?? '',
-    );
+_KeychainDeriveAddressRequest _$KeychainDeriveAddressRequestFromJson(
+  Map<String, dynamic> json,
+) => _KeychainDeriveAddressRequest(
+  serviceName: json['serviceName'] as String,
+  index: (json['index'] as num?)?.toInt() ?? 0,
+  pathSuffix: json['pathSuffix'] as String? ?? '',
+);
 
-Map<String, dynamic> _$$KeychainDeriveAddressRequestImplToJson(
-        _$KeychainDeriveAddressRequestImpl instance) =>
-    <String, dynamic>{
-      'serviceName': instance.serviceName,
-      'index': instance.index,
-      'pathSuffix': instance.pathSuffix,
-    };
+Map<String, dynamic> _$KeychainDeriveAddressRequestToJson(
+  _KeychainDeriveAddressRequest instance,
+) => <String, dynamic>{
+  'serviceName': instance.serviceName,
+  'index': instance.index,
+  'pathSuffix': instance.pathSuffix,
+};

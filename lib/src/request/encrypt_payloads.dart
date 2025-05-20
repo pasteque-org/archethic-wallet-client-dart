@@ -4,54 +4,55 @@ part 'encrypt_payloads.freezed.dart';
 part 'encrypt_payloads.g.dart';
 
 @freezed
-class EncryptPayloadsResult with _$EncryptPayloadsResult {
+abstract class EncryptPayloadsResult with _$EncryptPayloadsResult {
   const factory EncryptPayloadsResult({
-    required List<EncryptPayloadsResultDetail> encryptedPayloads,
+    required final List<EncryptPayloadsResultDetail> encryptedPayloads,
   }) = _EncryptPayloadsResult;
   const EncryptPayloadsResult._();
 
-  factory EncryptPayloadsResult.fromJson(Map<String, dynamic> json) =>
+  factory EncryptPayloadsResult.fromJson(final Map<String, dynamic> json) =>
       _$EncryptPayloadsResultFromJson(json);
 }
 
 @freezed
-class EncryptPayloadsResultDetail with _$EncryptPayloadsResultDetail {
+abstract class EncryptPayloadsResultDetail with _$EncryptPayloadsResultDetail {
   const factory EncryptPayloadsResultDetail({
-    required String encryptedPayload,
+    required final String encryptedPayload,
   }) = _EncryptPayloadsResultDetail;
   const EncryptPayloadsResultDetail._();
 
-  factory EncryptPayloadsResultDetail.fromJson(Map<String, dynamic> json) =>
-      _$EncryptPayloadsResultDetailFromJson(json);
+  factory EncryptPayloadsResultDetail.fromJson(
+    final Map<String, dynamic> json,
+  ) => _$EncryptPayloadsResultDetailFromJson(json);
 }
 
 @freezed
-class EncryptPayloadRequestData with _$EncryptPayloadRequestData {
+abstract class EncryptPayloadRequestData with _$EncryptPayloadRequestData {
   const factory EncryptPayloadRequestData({
-    required String payload,
-    required bool isHexa,
+    required final String payload,
+    required final bool isHexa,
   }) = _EncryptPayloadRequestData;
   const EncryptPayloadRequestData._();
 
-  factory EncryptPayloadRequestData.fromJson(Map<String, dynamic> json) =>
+  factory EncryptPayloadRequestData.fromJson(final Map<String, dynamic> json) =>
       _$EncryptPayloadRequestDataFromJson(json);
 }
 
 @freezed
-class EncryptPayloadRequest with _$EncryptPayloadRequest {
+abstract class EncryptPayloadRequest with _$EncryptPayloadRequest {
   const factory EncryptPayloadRequest({
     /// Service name to identify the derivation path to use
-    required String serviceName,
+    required final String serviceName,
 
     /// Additional information to add to a service derivation path (optional - default to empty)
-    @Default('') String pathSuffix,
+    @Default('') final String pathSuffix,
 
     /// - List of payloads to encrypt
-    @Default([]) List<EncryptPayloadRequestData> payloads,
+    @Default([]) final List<EncryptPayloadRequestData> payloads,
   }) = _EncryptPayloadRequest;
 
   const EncryptPayloadRequest._();
 
-  factory EncryptPayloadRequest.fromJson(Map<String, dynamic> json) =>
+  factory EncryptPayloadRequest.fromJson(final Map<String, dynamic> json) =>
       _$EncryptPayloadRequestFromJson(json);
 }

@@ -30,7 +30,7 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final textTheme = Theme.of(context)
         .textTheme
         .apply(displayColor: Theme.of(context).colorScheme.onSurface);
@@ -42,12 +42,12 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
         children: [
           FutureBuilder(
             future: widget.aewalletClient.getAccounts(),
-            builder: (context, snapshot) {
+            builder: (final context, final snapshot) {
               if (!snapshot.hasData) {
                 return const Center(child: CircularProgressIndicator());
               }
               return snapshot.data!.when(
-                success: (success) {
+                success: (final success) {
                   return SizedBox(
                     width: 300,
                     child: DropdownButtonHideUnderline(
@@ -56,17 +56,17 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
                         child: DropdownButton(
                           isExpanded: true,
                           value: dropdownValue,
-                          items: success.accounts.map<DropdownMenuItem<String>>(
-                              (AppAccount? value) {
+                          items: success.accounts
+                              .map<DropdownMenuItem<String>>((final value) {
                             return DropdownMenuItem<String>(
-                              value: value!.serviceName,
+                              value: value.serviceName,
                               child: Text(
                                 '${Uri.decodeFull(value.serviceName)} (${value.shortName})',
                                 style: textTheme.labelLarge,
                               ),
                             );
                           }).toList(),
-                          onChanged: (String? newValue) {
+                          onChanged: (final newValue) {
                             setState(() {
                               dropdownValue = newValue;
                             });
@@ -77,7 +77,7 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
                     ),
                   );
                 },
-                failure: (failure) => Text(
+                failure: (final failure) => Text(
                   'Request failed : $failure',
                   style: textTheme.labelLarge,
                 ),
@@ -104,11 +104,13 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
                     .subscribeAccount(dropdownValue!);
 
                 subscription.when(
-                  success: (success) {
+                  success: (final success) {
                     setState(() {
                       accountSub = success;
-                      accountStreamSub = success.updates.listen((event) {
-                        if (!context.mounted) return;
+                      accountStreamSub = success.updates.listen((final event) {
+                        if (!context.mounted) {
+                          return;
+                        }
                         ScaffoldMessenger.of(context).showSnackBar(
                           ResultSnackbar.update(
                             'balance: ${event.balance}, lastAddress: ${event.lastAddress}',
@@ -117,7 +119,7 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
                       });
                     });
                   },
-                  failure: (failure) {
+                  failure: (final failure) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       ResultSnackbar.error(
                         failure.message,

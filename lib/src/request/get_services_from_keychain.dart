@@ -5,22 +5,26 @@ part 'get_services_from_keychain.freezed.dart';
 part 'get_services_from_keychain.g.dart';
 
 @freezed
-class GetServicesFromKeychainResult with _$GetServicesFromKeychainResult {
+abstract class GetServicesFromKeychainResult
+    with _$GetServicesFromKeychainResult {
   const factory GetServicesFromKeychainResult({
-    required List<Service> services,
+    required final List<Service> services,
   }) = _GetServicesFromKeychainResult;
   const GetServicesFromKeychainResult._();
 
-  factory GetServicesFromKeychainResult.fromJson(Map<String, dynamic> json) =>
-      _$GetServicesFromKeychainResultFromJson(json);
+  factory GetServicesFromKeychainResult.fromJson(
+    final Map<String, dynamic> json,
+  ) => _$GetServicesFromKeychainResultFromJson(json);
 }
 
 @freezed
-class GetServicesFromKeychainRequest with _$GetServicesFromKeychainRequest {
+abstract class GetServicesFromKeychainRequest
+    with _$GetServicesFromKeychainRequest {
   const factory GetServicesFromKeychainRequest() =
       _GetServicesFromKeychainRequest;
   const GetServicesFromKeychainRequest._();
 
-  factory GetServicesFromKeychainRequest.fromJson(Map<String, dynamic> json) =>
-      _$GetServicesFromKeychainRequestFromJson(json);
+  factory GetServicesFromKeychainRequest.fromJson(
+    final Map<String, dynamic> json,
+  ) => _$GetServicesFromKeychainRequestFromJson(json);
 }

@@ -4,51 +4,52 @@ part 'account_sub.freezed.dart';
 part 'account_sub.g.dart';
 
 @freezed
-class AccountBalance with _$AccountBalance {
+abstract class AccountBalance with _$AccountBalance {
   const factory AccountBalance({
-    required String nativeTokenName,
-    required double nativeTokenValue,
+    required final String nativeTokenName,
+    required final double nativeTokenValue,
   }) = _AccountBalance;
   const AccountBalance._();
 
-  factory AccountBalance.fromJson(Map<String, dynamic> json) =>
+  factory AccountBalance.fromJson(final Map<String, dynamic> json) =>
       _$AccountBalanceFromJson(json);
 }
 
 @freezed
-class Account with _$Account {
+abstract class Account with _$Account {
   const factory Account({
-    required String name,
-    required String genesisAddress,
-    String? lastAddress,
-    AccountBalance? balance,
+    required final String name,
+    required final String genesisAddress,
+    final String? lastAddress,
+    final AccountBalance? balance,
   }) = _Account;
   const Account._();
 
-  factory Account.fromJson(Map<String, dynamic> json) =>
+  factory Account.fromJson(final Map<String, dynamic> json) =>
       _$AccountFromJson(json);
 }
 
 @freezed
-class SubscribeAccountRequest with _$SubscribeAccountRequest {
-  const factory SubscribeAccountRequest({
-    required String serviceName,
-  }) = _SubscribeAccountRequest;
+abstract class SubscribeAccountRequest with _$SubscribeAccountRequest {
+  const factory SubscribeAccountRequest({required final String serviceName}) =
+      _SubscribeAccountRequest;
   const SubscribeAccountRequest._();
 
-  factory SubscribeAccountRequest.fromJson(Map<String, dynamic> json) =>
+  factory SubscribeAccountRequest.fromJson(final Map<String, dynamic> json) =>
       _$SubscribeAccountRequestFromJson(json);
 }
 
 @freezed
-class SubscribeCurrentAccountRequest with _$SubscribeCurrentAccountRequest {
+abstract class SubscribeCurrentAccountRequest
+    with _$SubscribeCurrentAccountRequest {
   const factory SubscribeCurrentAccountRequest() =
       _SubscribeCurrentAccountRequest;
 
   const SubscribeCurrentAccountRequest._();
 
-  factory SubscribeCurrentAccountRequest.fromJson(Map<String, dynamic> json) =>
-      _$SubscribeCurrentAccountRequestFromJson(json);
+  factory SubscribeCurrentAccountRequest.fromJson(
+    final Map<String, dynamic> json,
+  ) => _$SubscribeCurrentAccountRequestFromJson(json);
 }
 
 typedef SubscribeAccountNotification = Account?;

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,161 +10,139 @@ part of 'remove_service.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-RemoveServiceRequest _$RemoveServiceRequestFromJson(Map<String, dynamic> json) {
-  return _RemoveServiceRequest.fromJson(json);
-}
 
 /// @nodoc
 mixin _$RemoveServiceRequest {
-  String get name => throw _privateConstructorUsedError;
+
+ String get name;
+/// Create a copy of RemoveServiceRequest
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RemoveServiceRequestCopyWith<RemoveServiceRequest> get copyWith => _$RemoveServiceRequestCopyWithImpl<RemoveServiceRequest>(this as RemoveServiceRequest, _$identity);
 
   /// Serializes this RemoveServiceRequest to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of RemoveServiceRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $RemoveServiceRequestCopyWith<RemoveServiceRequest> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RemoveServiceRequest&&(identical(other.name, name) || other.name == name));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name);
+
+@override
+String toString() {
+  return 'RemoveServiceRequest(name: $name)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $RemoveServiceRequestCopyWith<$Res> {
-  factory $RemoveServiceRequestCopyWith(RemoveServiceRequest value,
-          $Res Function(RemoveServiceRequest) then) =
-      _$RemoveServiceRequestCopyWithImpl<$Res, RemoveServiceRequest>;
-  @useResult
-  $Res call({String name});
-}
+abstract mixin class $RemoveServiceRequestCopyWith<$Res>  {
+  factory $RemoveServiceRequestCopyWith(RemoveServiceRequest value, $Res Function(RemoveServiceRequest) _then) = _$RemoveServiceRequestCopyWithImpl;
+@useResult
+$Res call({
+ String name
+});
 
+
+
+
+}
 /// @nodoc
-class _$RemoveServiceRequestCopyWithImpl<$Res,
-        $Val extends RemoveServiceRequest>
+class _$RemoveServiceRequestCopyWithImpl<$Res>
     implements $RemoveServiceRequestCopyWith<$Res> {
-  _$RemoveServiceRequestCopyWithImpl(this._value, this._then);
+  _$RemoveServiceRequestCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final RemoveServiceRequest _self;
+  final $Res Function(RemoveServiceRequest) _then;
 
-  /// Create a copy of RemoveServiceRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of RemoveServiceRequest
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,}) {
+  return _then(_self.copyWith(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$RemoveServiceRequestImplCopyWith<$Res>
-    implements $RemoveServiceRequestCopyWith<$Res> {
-  factory _$$RemoveServiceRequestImplCopyWith(_$RemoveServiceRequestImpl value,
-          $Res Function(_$RemoveServiceRequestImpl) then) =
-      __$$RemoveServiceRequestImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name});
 }
 
-/// @nodoc
-class __$$RemoveServiceRequestImplCopyWithImpl<$Res>
-    extends _$RemoveServiceRequestCopyWithImpl<$Res, _$RemoveServiceRequestImpl>
-    implements _$$RemoveServiceRequestImplCopyWith<$Res> {
-  __$$RemoveServiceRequestImplCopyWithImpl(_$RemoveServiceRequestImpl _value,
-      $Res Function(_$RemoveServiceRequestImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of RemoveServiceRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-  }) {
-    return _then(_$RemoveServiceRequestImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$RemoveServiceRequestImpl extends _RemoveServiceRequest {
-  const _$RemoveServiceRequestImpl({required this.name}) : super._();
 
-  factory _$RemoveServiceRequestImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RemoveServiceRequestImplFromJson(json);
+class _RemoveServiceRequest extends RemoveServiceRequest {
+  const _RemoveServiceRequest({required this.name}): super._();
+  factory _RemoveServiceRequest.fromJson(Map<String, dynamic> json) => _$RemoveServiceRequestFromJson(json);
 
-  @override
-  final String name;
+@override final  String name;
 
-  @override
-  String toString() {
-    return 'RemoveServiceRequest(name: $name)';
-  }
+/// Create a copy of RemoveServiceRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RemoveServiceRequestCopyWith<_RemoveServiceRequest> get copyWith => __$RemoveServiceRequestCopyWithImpl<_RemoveServiceRequest>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RemoveServiceRequestImpl &&
-            (identical(other.name, name) || other.name == name));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, name);
-
-  /// Create a copy of RemoveServiceRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RemoveServiceRequestImplCopyWith<_$RemoveServiceRequestImpl>
-      get copyWith =>
-          __$$RemoveServiceRequestImplCopyWithImpl<_$RemoveServiceRequestImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$RemoveServiceRequestImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$RemoveServiceRequestToJson(this, );
 }
 
-abstract class _RemoveServiceRequest extends RemoveServiceRequest {
-  const factory _RemoveServiceRequest({required final String name}) =
-      _$RemoveServiceRequestImpl;
-  const _RemoveServiceRequest._() : super._();
-
-  factory _RemoveServiceRequest.fromJson(Map<String, dynamic> json) =
-      _$RemoveServiceRequestImpl.fromJson;
-
-  @override
-  String get name;
-
-  /// Create a copy of RemoveServiceRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RemoveServiceRequestImplCopyWith<_$RemoveServiceRequestImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RemoveServiceRequest&&(identical(other.name, name) || other.name == name));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name);
+
+@override
+String toString() {
+  return 'RemoveServiceRequest(name: $name)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RemoveServiceRequestCopyWith<$Res> implements $RemoveServiceRequestCopyWith<$Res> {
+  factory _$RemoveServiceRequestCopyWith(_RemoveServiceRequest value, $Res Function(_RemoveServiceRequest) _then) = __$RemoveServiceRequestCopyWithImpl;
+@override @useResult
+$Res call({
+ String name
+});
+
+
+
+
+}
+/// @nodoc
+class __$RemoveServiceRequestCopyWithImpl<$Res>
+    implements _$RemoveServiceRequestCopyWith<$Res> {
+  __$RemoveServiceRequestCopyWithImpl(this._self, this._then);
+
+  final _RemoveServiceRequest _self;
+  final $Res Function(_RemoveServiceRequest) _then;
+
+/// Create a copy of RemoveServiceRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,}) {
+  return _then(_RemoveServiceRequest(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

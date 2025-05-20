@@ -8,25 +8,24 @@ import 'package:stream_channel/stream_channel.dart';
 
 class WebBrowserExtensionDappClient extends AWCJsonRPCClient
     implements ArchethicDAppClient {
-  WebBrowserExtensionDappClient({
-    required super.origin,
-  }) : super(
-          channelBuilder: () async {
-            if (archethic?.streamChannel == null) {
-              throw Failure.connectivity;
-            }
-            final streamChannel = WebBrowserExtensionStreamChannel(
-              streamChannel: archethic!.streamChannel!,
-            );
+  WebBrowserExtensionDappClient({required super.origin})
+    : super(
+        channelBuilder: () async {
+          if (archethic?.streamChannel == null) {
+            throw Failure.connectivity;
+          }
+          final streamChannel = WebBrowserExtensionStreamChannel(
+            streamChannel: archethic!.streamChannel!,
+          );
 
-            await streamChannel.connect();
+          await streamChannel.connect();
 
-            return streamChannel;
-          },
-          disposeChannel: (channel) async {
-            await (channel as WebBrowserExtensionStreamChannel).dispose();
-          },
-        );
+          return streamChannel;
+        },
+        disposeChannel: (final channel) async {
+          await (channel as WebBrowserExtensionStreamChannel).dispose();
+        },
+      );
 
   static bool get isAvailable => archethic?.streamChannel != null;
 }
@@ -35,7 +34,7 @@ class WebBrowserExtensionStreamChannel
     with StreamChannelMixin<String>
     implements StreamChannel<String> {
   WebBrowserExtensionStreamChannel({required this.streamChannel}) {
-    _onPostMessageSubscription = _out.stream.listen((event) async {
+    _onPostMessageSubscription = _out.stream.listen((final event) async {
       _logger.info('[WBE] send command $event');
       await streamChannel.send(event as JSString).toDart;
       _logger.info('[WBE] send command Done');
@@ -47,14 +46,16 @@ class WebBrowserExtensionStreamChannel
   Future<void> connect() async {
     final connectionCompleter = Completer<void>();
 
-    streamChannel.onReady = () {
-      _setupStreamChannel();
-      connectionCompleter.complete();
-    }.toJS;
+    streamChannel.onReady =
+        () {
+          _setupStreamChannel();
+          connectionCompleter.complete();
+        }.toJS;
 
-    streamChannel.onClose = (String _) {
-      connectionCompleter.completeError(Failure.connectivity);
-    }.toJS;
+    streamChannel.onClose =
+        (String _) {
+          connectionCompleter.completeError(Failure.connectivity);
+        }.toJS;
 
     await streamChannel.connect().toDart;
 
@@ -62,17 +63,19 @@ class WebBrowserExtensionStreamChannel
   }
 
   void _setupStreamChannel() {
-    streamChannel.onReceive = (String message) {
-      _logger.info('[WBE] command received $message');
-      _in.add(message);
-      _logger.info('[WBE] command received Done');
-    }.toJS;
+    streamChannel.onReceive =
+        (final String message) {
+          _logger.info('[WBE] command received $message');
+          _in.add(message);
+          _logger.info('[WBE] command received Done');
+        }.toJS;
 
-    streamChannel.onClose = (String reason) {
-      unawaited(_onPostMessageSubscription.cancel());
-      unawaited(_in.close());
-      unawaited(_out.close());
-    }.toJS;
+    streamChannel.onClose =
+        (final String reason) {
+          unawaited(_onPostMessageSubscription.cancel());
+          unawaited(_in.close());
+          unawaited(_out.close());
+        }.toJS;
   }
 
   final AWCStreamChannelJS streamChannel;

@@ -4,25 +4,27 @@ part 'keychain_derive_address.freezed.dart';
 part 'keychain_derive_address.g.dart';
 
 @freezed
-class KeychainDeriveAddressResult with _$KeychainDeriveAddressResult {
-  const factory KeychainDeriveAddressResult({
-    required String address,
-  }) = _KeychainDeriveAddressResult;
+abstract class KeychainDeriveAddressResult with _$KeychainDeriveAddressResult {
+  const factory KeychainDeriveAddressResult({required final String address}) =
+      _KeychainDeriveAddressResult;
   const KeychainDeriveAddressResult._();
 
-  factory KeychainDeriveAddressResult.fromJson(Map<String, dynamic> json) =>
-      _$KeychainDeriveAddressResultFromJson(json);
+  factory KeychainDeriveAddressResult.fromJson(
+    final Map<String, dynamic> json,
+  ) => _$KeychainDeriveAddressResultFromJson(json);
 }
 
 @freezed
-class KeychainDeriveAddressRequest with _$KeychainDeriveAddressRequest {
+abstract class KeychainDeriveAddressRequest
+    with _$KeychainDeriveAddressRequest {
   const factory KeychainDeriveAddressRequest({
-    required String serviceName,
-    @Default(0) int index,
-    @Default('') String pathSuffix,
+    required final String serviceName,
+    @Default(0) final int index,
+    @Default('') final String pathSuffix,
   }) = _KeychainDeriveAddressRequest;
   const KeychainDeriveAddressRequest._();
 
-  factory KeychainDeriveAddressRequest.fromJson(Map<String, dynamic> json) =>
-      _$KeychainDeriveAddressRequestFromJson(json);
+  factory KeychainDeriveAddressRequest.fromJson(
+    final Map<String, dynamic> json,
+  ) => _$KeychainDeriveAddressRequestFromJson(json);
 }

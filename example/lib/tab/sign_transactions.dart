@@ -76,7 +76,7 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -105,7 +105,7 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
                   ),
                 );
                 response.when(
-                  failure: (failure) {
+                  failure: (final failure) {
                     _logger.severe(
                       'Command failed',
                       failure,
@@ -116,7 +116,7 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
                       ),
                     );
                   },
-                  success: (result) {
+                  success: (final result) {
                     _logger.info(
                       'Command succeed : ${json.encode(result)}',
                     );
@@ -125,8 +125,10 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
                     );
                   },
                 );
-              } catch (e) {
-                if (!context.mounted) return;
+              } on Exception catch (e) {
+                if (!context.mounted) {
+                  return;
+                }
                 ScaffoldMessenger.of(context).showSnackBar(
                   ResultSnackbar.error(e.toString()),
                 );

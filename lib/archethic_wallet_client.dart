@@ -1,5 +1,6 @@
 ///
 /// A client dart library to interact with Archethic Wallet RPC API.
+// ignore_for_file: unnecessary_library_name
 library archethic_wallet_client;
 
 export 'src/core/request.dart';

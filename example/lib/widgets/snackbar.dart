@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class ResultSnackbar extends SnackBar {
   ResultSnackbar({
+    required final String prefix,
+    required final String message,
+    required final Color color,
     super.key,
-    required String prefix,
-    required String message,
-    required Color color,
   }) : super(
           duration: const Duration(seconds: 5),
           backgroundColor: color,
@@ -19,19 +19,19 @@ class ResultSnackbar extends SnackBar {
           ),
         );
 
-  factory ResultSnackbar.update(String message) => ResultSnackbar(
+  factory ResultSnackbar.update(final String message) => ResultSnackbar(
         prefix: 'Update received : ',
         message: message,
         color: Colors.blue,
       );
 
-  factory ResultSnackbar.success(String message) => ResultSnackbar(
+  factory ResultSnackbar.success(final String message) => ResultSnackbar(
         prefix: 'Success :',
         message: message,
         color: Colors.green,
       );
 
-  factory ResultSnackbar.error(String message) => ResultSnackbar(
+  factory ResultSnackbar.error(final String message) => ResultSnackbar(
         prefix: 'Error :',
         message: message,
         color: Colors.red,

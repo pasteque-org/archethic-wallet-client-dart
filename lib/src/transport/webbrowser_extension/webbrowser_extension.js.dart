@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_setters_without_getters
 
 @JS()
+// ignore: unnecessary_library_name
 library awc;
 
 import 'dart:js_interop';
@@ -26,10 +27,10 @@ extension type AWCStreamChannelJS._(JSObject _) implements JSObject {
 
   /// This returns a promise.
   /// You must use `promiseToFuture` to call this from Dart code.
-  external JSPromise send(JSString data);
-  external set onReceive(JSFunction callback);
-  external set onReady(JSFunction callback);
-  external set onClose(JSFunction callback);
+  external JSPromise send(final JSString data);
+  external set onReceive(final JSFunction callback);
+  external set onReady(final JSFunction callback);
+  external set onClose(final JSFunction callback);
 }
 
 @JS()

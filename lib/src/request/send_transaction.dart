@@ -5,35 +5,35 @@ part 'send_transaction.freezed.dart';
 part 'send_transaction.g.dart';
 
 @freezed
-class SendTransactionResult with _$SendTransactionResult {
+abstract class SendTransactionResult with _$SendTransactionResult {
   const factory SendTransactionResult({
-    required String transactionAddress,
-    required int nbConfirmations,
-    required int maxConfirmations,
+    required final String transactionAddress,
+    required final int nbConfirmations,
+    required final int maxConfirmations,
   }) = _SendTransactionResult;
   const SendTransactionResult._();
 
-  factory SendTransactionResult.fromJson(Map<String, dynamic> json) =>
+  factory SendTransactionResult.fromJson(final Map<String, dynamic> json) =>
       _$SendTransactionResultFromJson(json);
 }
 
 @freezed
-class SendTransactionRequest with _$SendTransactionRequest {
+abstract class SendTransactionRequest with _$SendTransactionRequest {
   const factory SendTransactionRequest({
     /// - [Data]: transaction data zone (identity, keychain, smart contract, etc.)
-    required Data data,
+    required final Data data,
 
     /// - Type: transaction type
-    required String type,
+    required final String type,
 
     /// - Version: version of the transaction (used for backward compatiblity)
-    required int version,
+    required final int version,
 
     /// - Flag to generate and add the encrypted smart contract's seed in a secret
-    bool? generateEncryptedSeedSC,
+    final bool? generateEncryptedSeedSC,
   }) = _SendTransactionRequest;
   const SendTransactionRequest._();
 
-  factory SendTransactionRequest.fromJson(Map<String, dynamic> json) =>
+  factory SendTransactionRequest.fromJson(final Map<String, dynamic> json) =>
       _$SendTransactionRequestFromJson(json);
 }

@@ -10,24 +10,24 @@ class RefreshCurrentAccountTab extends StatelessWidget {
   final ArchethicDAppClient aewalletClient;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final textTheme = Theme.of(context)
         .textTheme
         .apply(displayColor: Theme.of(context).colorScheme.onSurface);
 
     return FutureBuilder(
       future: aewalletClient.refreshCurrentAccount(),
-      builder: (context, snapshot) {
+      builder: (final context, final snapshot) {
         if (!snapshot.hasData) {
           return const Center(child: CircularProgressIndicator());
         }
         return Center(
           child: snapshot.data!.when(
-            success: (success) => SelectableText(
+            success: (final success) => SelectableText(
               'Refresh done',
               style: textTheme.labelLarge,
             ),
-            failure: (failure) => SelectableText(
+            failure: (final failure) => SelectableText(
               'Request failed : $failure',
               style: textTheme.labelLarge,
             ),

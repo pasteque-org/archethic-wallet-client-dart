@@ -1,66 +1,68 @@
 name: archethic_wallet_client
 description: A client dart library to interact with Archethic Wallet RPC API.
 
-version: 2.3.3
+version: 3.0.0
 
 homepage: https://github.com/archethic-foundation/archethic-wallet-client-dart
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
+  sdk: ">=3.7.0 <4.0.0"
 
 dependencies:
   # Archethic dart library for Flutter
-  archethic_lib_dart: ^7.9.2
   #archethic_lib_dart:
   #  git:
-  #    url: https://github.com/archethic-foundation/libdart.git
+  #    url: https://github.com/pasteque-org/libdart.git
   #    ref: main
-  #archethic_lib_dart:
-  #  path: ../libdart-2
+  archethic_lib_dart:
+    path: ../libdart
 
   # A RPC-via-deeplink communication library coded in Dart. This is dedicated to Flutter mobile applications (iOS / Android).
-  deeplink_rpc: ^2.0.0-beta.2
   #deeplink_rpc:
-  #  path: ../lib-deeplink-rpc
+  #  git:
+  #    url: https://github.com/pasteque-org/lib-deeplink-rpc.git
+  #    ref: main
+  deeplink_rpc:
+    path: ../lib-deeplink-rpc
 
   flutter:
     sdk: flutter
 
   # Annotations for the freezed code-generator. This package does nothing without freezed too
-  freezed_annotation: ^2.4.4
+  freezed_annotation: ^3.0.0
+
+  # Defines the annotations used by json_serializable to create code for JSON serialization and deserialization.
+  json_annotation: ^4.9.0
 
   # JSON-RPC (v2.0) utility classes. Invoke methods on another machine using JSON-formatted messages. Some assembly required.
-  json_rpc_2: ^3.0.2
+  json_rpc_2: ^4.0.0
 
   # Logging lib
   logging: ^1.3.0
 
   # An abstraction for two-way communication channels based on the Dart Stream class.
-  stream_channel: 2.1.2
+  stream_channel: ^2.1.4
 
   # Open deeplink urls
   url_launcher: ^6.3.1
 
   # Lightweight browser API bindings built around JS static interop.
-  web: ^1.0.0
+  web: ^1.1.1
 
   # StreamChannel wrappers for WebSockets. Provides a cross-platform WebSocketChannel API, a cross-platform implementation of that API that communicates over an underlying StreamChannel.
-  web_socket_channel: ^3.0.1
+  web_socket_channel: ^3.0.3
 
 dev_dependencies:
   # A build system for Dart code generation and modular compilation
-  build_runner: ^2.4.13
+  build_runner: ^2.4.15
 
   # Code generation for immutable classes that has a simple syntax/API without compromising on the features.
-  freezed: ^2.5.7
-
-  # Defines the annotations used by json_serializable to create code for JSON serialization and deserialization.
-  json_annotation: ^4.9.0
+  freezed: ^3.0.6
 
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
-  json_serializable: ^6.9.0
+  json_serializable: ^6.9.5
 
-  lints: ^5.0.0
+  lints: ^5.1.1
 
   # A full featured library for writing and running Dart tests across platforms.
-  test: ^1.25.12
+  test: ^1.26.1

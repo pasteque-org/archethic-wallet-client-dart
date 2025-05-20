@@ -14,7 +14,7 @@ class LoggerSetup {
   }
 
   void _registerLogListeners() {
-    Logger.root.onRecord.listen((event) {
+    Logger.root.onRecord.listen((final event) {
       debugPrint('[${event.loggerName}] ${event.message}');
       if (event.error != null) {
         debugPrint('\t${event.error}');

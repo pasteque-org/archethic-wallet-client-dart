@@ -47,7 +47,7 @@ class _EncryptPayloadsTabState extends State<EncryptPayloadsTab> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -88,7 +88,7 @@ class _EncryptPayloadsTabState extends State<EncryptPayloadsTab> {
                 final response = await widget.aewalletClient
                     .encryptPayloads(encryptPayloadRequest);
                 await response.when(
-                  failure: (failure) {
+                  failure: (final failure) {
                     _logger.severe(
                       'Command failed',
                       failure,
@@ -99,7 +99,7 @@ class _EncryptPayloadsTabState extends State<EncryptPayloadsTab> {
                       ),
                     );
                   },
-                  success: (result) async {
+                  success: (final result) async {
                     _logger.info(
                       'Command succeed : ${json.encode(result)}',
                     );
@@ -123,7 +123,7 @@ class _EncryptPayloadsTabState extends State<EncryptPayloadsTab> {
                     final response = await widget.aewalletClient
                         .decryptPayloads(decryptPayloadRequest);
                     response.when(
-                      failure: (failure) {
+                      failure: (final failure) {
                         _logger.severe(
                           'Command failed',
                           failure,
@@ -134,7 +134,7 @@ class _EncryptPayloadsTabState extends State<EncryptPayloadsTab> {
                           ),
                         );
                       },
-                      success: (result) {
+                      success: (final result) {
                         _logger.info(
                           'Command succeed : ${json.encode(result)}',
                         );
@@ -175,7 +175,9 @@ class _EncryptPayloadsTabState extends State<EncryptPayloadsTab> {
                   },
                 );
               } catch (e) {
-                if (!context.mounted) return;
+                if (!context.mounted) {
+                  return;
+                }
                 ScaffoldMessenger.of(context).showSnackBar(
                   ResultSnackbar.error(e.toString()),
                 );

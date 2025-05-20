@@ -25,7 +25,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
   void initState() {
     connectionState = widget.aewalletClient.state;
     _connectionStateSubscription =
-        widget.aewalletClient.connectionStateStream.listen((event) {
+        widget.aewalletClient.connectionStateStream.listen((final event) {
       setState(() {
         connectionState = event;
       });
@@ -40,7 +40,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme
         .apply(displayColor: Theme.of(context).colorScheme.onSurface);

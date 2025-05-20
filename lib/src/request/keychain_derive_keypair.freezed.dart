@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,373 +10,278 @@ part of 'keychain_derive_keypair.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-KeychainDeriveKeypairResult _$KeychainDeriveKeypairResultFromJson(
-    Map<String, dynamic> json) {
-  return _KeychainDeriveKeypairResult.fromJson(json);
-}
 
 /// @nodoc
 mixin _$KeychainDeriveKeypairResult {
-  String get publicKey => throw _privateConstructorUsedError;
+
+ String get publicKey;
+/// Create a copy of KeychainDeriveKeypairResult
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$KeychainDeriveKeypairResultCopyWith<KeychainDeriveKeypairResult> get copyWith => _$KeychainDeriveKeypairResultCopyWithImpl<KeychainDeriveKeypairResult>(this as KeychainDeriveKeypairResult, _$identity);
 
   /// Serializes this KeychainDeriveKeypairResult to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of KeychainDeriveKeypairResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $KeychainDeriveKeypairResultCopyWith<KeychainDeriveKeypairResult>
-      get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is KeychainDeriveKeypairResult&&(identical(other.publicKey, publicKey) || other.publicKey == publicKey));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,publicKey);
+
+@override
+String toString() {
+  return 'KeychainDeriveKeypairResult(publicKey: $publicKey)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $KeychainDeriveKeypairResultCopyWith<$Res> {
-  factory $KeychainDeriveKeypairResultCopyWith(
-          KeychainDeriveKeypairResult value,
-          $Res Function(KeychainDeriveKeypairResult) then) =
-      _$KeychainDeriveKeypairResultCopyWithImpl<$Res,
-          KeychainDeriveKeypairResult>;
-  @useResult
-  $Res call({String publicKey});
-}
+abstract mixin class $KeychainDeriveKeypairResultCopyWith<$Res>  {
+  factory $KeychainDeriveKeypairResultCopyWith(KeychainDeriveKeypairResult value, $Res Function(KeychainDeriveKeypairResult) _then) = _$KeychainDeriveKeypairResultCopyWithImpl;
+@useResult
+$Res call({
+ String publicKey
+});
 
+
+
+
+}
 /// @nodoc
-class _$KeychainDeriveKeypairResultCopyWithImpl<$Res,
-        $Val extends KeychainDeriveKeypairResult>
+class _$KeychainDeriveKeypairResultCopyWithImpl<$Res>
     implements $KeychainDeriveKeypairResultCopyWith<$Res> {
-  _$KeychainDeriveKeypairResultCopyWithImpl(this._value, this._then);
+  _$KeychainDeriveKeypairResultCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final KeychainDeriveKeypairResult _self;
+  final $Res Function(KeychainDeriveKeypairResult) _then;
 
-  /// Create a copy of KeychainDeriveKeypairResult
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? publicKey = null,
-  }) {
-    return _then(_value.copyWith(
-      publicKey: null == publicKey
-          ? _value.publicKey
-          : publicKey // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of KeychainDeriveKeypairResult
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? publicKey = null,}) {
+  return _then(_self.copyWith(
+publicKey: null == publicKey ? _self.publicKey : publicKey // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$KeychainDeriveKeypairResultImplCopyWith<$Res>
-    implements $KeychainDeriveKeypairResultCopyWith<$Res> {
-  factory _$$KeychainDeriveKeypairResultImplCopyWith(
-          _$KeychainDeriveKeypairResultImpl value,
-          $Res Function(_$KeychainDeriveKeypairResultImpl) then) =
-      __$$KeychainDeriveKeypairResultImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String publicKey});
 }
 
-/// @nodoc
-class __$$KeychainDeriveKeypairResultImplCopyWithImpl<$Res>
-    extends _$KeychainDeriveKeypairResultCopyWithImpl<$Res,
-        _$KeychainDeriveKeypairResultImpl>
-    implements _$$KeychainDeriveKeypairResultImplCopyWith<$Res> {
-  __$$KeychainDeriveKeypairResultImplCopyWithImpl(
-      _$KeychainDeriveKeypairResultImpl _value,
-      $Res Function(_$KeychainDeriveKeypairResultImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of KeychainDeriveKeypairResult
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? publicKey = null,
-  }) {
-    return _then(_$KeychainDeriveKeypairResultImpl(
-      publicKey: null == publicKey
-          ? _value.publicKey
-          : publicKey // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$KeychainDeriveKeypairResultImpl extends _KeychainDeriveKeypairResult {
-  const _$KeychainDeriveKeypairResultImpl({required this.publicKey})
-      : super._();
 
-  factory _$KeychainDeriveKeypairResultImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$KeychainDeriveKeypairResultImplFromJson(json);
+class _KeychainDeriveKeypairResult extends KeychainDeriveKeypairResult {
+  const _KeychainDeriveKeypairResult({required this.publicKey}): super._();
+  factory _KeychainDeriveKeypairResult.fromJson(Map<String, dynamic> json) => _$KeychainDeriveKeypairResultFromJson(json);
 
-  @override
-  final String publicKey;
+@override final  String publicKey;
 
-  @override
-  String toString() {
-    return 'KeychainDeriveKeypairResult(publicKey: $publicKey)';
-  }
+/// Create a copy of KeychainDeriveKeypairResult
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$KeychainDeriveKeypairResultCopyWith<_KeychainDeriveKeypairResult> get copyWith => __$KeychainDeriveKeypairResultCopyWithImpl<_KeychainDeriveKeypairResult>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$KeychainDeriveKeypairResultImpl &&
-            (identical(other.publicKey, publicKey) ||
-                other.publicKey == publicKey));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, publicKey);
-
-  /// Create a copy of KeychainDeriveKeypairResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$KeychainDeriveKeypairResultImplCopyWith<_$KeychainDeriveKeypairResultImpl>
-      get copyWith => __$$KeychainDeriveKeypairResultImplCopyWithImpl<
-          _$KeychainDeriveKeypairResultImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$KeychainDeriveKeypairResultImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$KeychainDeriveKeypairResultToJson(this, );
 }
 
-abstract class _KeychainDeriveKeypairResult
-    extends KeychainDeriveKeypairResult {
-  const factory _KeychainDeriveKeypairResult(
-      {required final String publicKey}) = _$KeychainDeriveKeypairResultImpl;
-  const _KeychainDeriveKeypairResult._() : super._();
-
-  factory _KeychainDeriveKeypairResult.fromJson(Map<String, dynamic> json) =
-      _$KeychainDeriveKeypairResultImpl.fromJson;
-
-  @override
-  String get publicKey;
-
-  /// Create a copy of KeychainDeriveKeypairResult
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$KeychainDeriveKeypairResultImplCopyWith<_$KeychainDeriveKeypairResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _KeychainDeriveKeypairResult&&(identical(other.publicKey, publicKey) || other.publicKey == publicKey));
 }
 
-KeychainDeriveKeypairRequest _$KeychainDeriveKeypairRequestFromJson(
-    Map<String, dynamic> json) {
-  return _KeychainDeriveKeypairRequest.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,publicKey);
+
+@override
+String toString() {
+  return 'KeychainDeriveKeypairResult(publicKey: $publicKey)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$KeychainDeriveKeypairResultCopyWith<$Res> implements $KeychainDeriveKeypairResultCopyWith<$Res> {
+  factory _$KeychainDeriveKeypairResultCopyWith(_KeychainDeriveKeypairResult value, $Res Function(_KeychainDeriveKeypairResult) _then) = __$KeychainDeriveKeypairResultCopyWithImpl;
+@override @useResult
+$Res call({
+ String publicKey
+});
+
+
+
+
+}
+/// @nodoc
+class __$KeychainDeriveKeypairResultCopyWithImpl<$Res>
+    implements _$KeychainDeriveKeypairResultCopyWith<$Res> {
+  __$KeychainDeriveKeypairResultCopyWithImpl(this._self, this._then);
+
+  final _KeychainDeriveKeypairResult _self;
+  final $Res Function(_KeychainDeriveKeypairResult) _then;
+
+/// Create a copy of KeychainDeriveKeypairResult
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? publicKey = null,}) {
+  return _then(_KeychainDeriveKeypairResult(
+publicKey: null == publicKey ? _self.publicKey : publicKey // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$KeychainDeriveKeypairRequest {
-  String get serviceName => throw _privateConstructorUsedError;
-  int get index => throw _privateConstructorUsedError;
-  String get pathSuffix => throw _privateConstructorUsedError;
+
+ String get serviceName; int get index; String get pathSuffix;
+/// Create a copy of KeychainDeriveKeypairRequest
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$KeychainDeriveKeypairRequestCopyWith<KeychainDeriveKeypairRequest> get copyWith => _$KeychainDeriveKeypairRequestCopyWithImpl<KeychainDeriveKeypairRequest>(this as KeychainDeriveKeypairRequest, _$identity);
 
   /// Serializes this KeychainDeriveKeypairRequest to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of KeychainDeriveKeypairRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $KeychainDeriveKeypairRequestCopyWith<KeychainDeriveKeypairRequest>
-      get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is KeychainDeriveKeypairRequest&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.index, index) || other.index == index)&&(identical(other.pathSuffix, pathSuffix) || other.pathSuffix == pathSuffix));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,serviceName,index,pathSuffix);
+
+@override
+String toString() {
+  return 'KeychainDeriveKeypairRequest(serviceName: $serviceName, index: $index, pathSuffix: $pathSuffix)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $KeychainDeriveKeypairRequestCopyWith<$Res> {
-  factory $KeychainDeriveKeypairRequestCopyWith(
-          KeychainDeriveKeypairRequest value,
-          $Res Function(KeychainDeriveKeypairRequest) then) =
-      _$KeychainDeriveKeypairRequestCopyWithImpl<$Res,
-          KeychainDeriveKeypairRequest>;
-  @useResult
-  $Res call({String serviceName, int index, String pathSuffix});
-}
+abstract mixin class $KeychainDeriveKeypairRequestCopyWith<$Res>  {
+  factory $KeychainDeriveKeypairRequestCopyWith(KeychainDeriveKeypairRequest value, $Res Function(KeychainDeriveKeypairRequest) _then) = _$KeychainDeriveKeypairRequestCopyWithImpl;
+@useResult
+$Res call({
+ String serviceName, int index, String pathSuffix
+});
 
+
+
+
+}
 /// @nodoc
-class _$KeychainDeriveKeypairRequestCopyWithImpl<$Res,
-        $Val extends KeychainDeriveKeypairRequest>
+class _$KeychainDeriveKeypairRequestCopyWithImpl<$Res>
     implements $KeychainDeriveKeypairRequestCopyWith<$Res> {
-  _$KeychainDeriveKeypairRequestCopyWithImpl(this._value, this._then);
+  _$KeychainDeriveKeypairRequestCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final KeychainDeriveKeypairRequest _self;
+  final $Res Function(KeychainDeriveKeypairRequest) _then;
 
-  /// Create a copy of KeychainDeriveKeypairRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? serviceName = null,
-    Object? index = null,
-    Object? pathSuffix = null,
-  }) {
-    return _then(_value.copyWith(
-      serviceName: null == serviceName
-          ? _value.serviceName
-          : serviceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-      pathSuffix: null == pathSuffix
-          ? _value.pathSuffix
-          : pathSuffix // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of KeychainDeriveKeypairRequest
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? serviceName = null,Object? index = null,Object? pathSuffix = null,}) {
+  return _then(_self.copyWith(
+serviceName: null == serviceName ? _self.serviceName : serviceName // ignore: cast_nullable_to_non_nullable
+as String,index: null == index ? _self.index : index // ignore: cast_nullable_to_non_nullable
+as int,pathSuffix: null == pathSuffix ? _self.pathSuffix : pathSuffix // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$KeychainDeriveKeypairRequestImplCopyWith<$Res>
-    implements $KeychainDeriveKeypairRequestCopyWith<$Res> {
-  factory _$$KeychainDeriveKeypairRequestImplCopyWith(
-          _$KeychainDeriveKeypairRequestImpl value,
-          $Res Function(_$KeychainDeriveKeypairRequestImpl) then) =
-      __$$KeychainDeriveKeypairRequestImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String serviceName, int index, String pathSuffix});
 }
 
-/// @nodoc
-class __$$KeychainDeriveKeypairRequestImplCopyWithImpl<$Res>
-    extends _$KeychainDeriveKeypairRequestCopyWithImpl<$Res,
-        _$KeychainDeriveKeypairRequestImpl>
-    implements _$$KeychainDeriveKeypairRequestImplCopyWith<$Res> {
-  __$$KeychainDeriveKeypairRequestImplCopyWithImpl(
-      _$KeychainDeriveKeypairRequestImpl _value,
-      $Res Function(_$KeychainDeriveKeypairRequestImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of KeychainDeriveKeypairRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? serviceName = null,
-    Object? index = null,
-    Object? pathSuffix = null,
-  }) {
-    return _then(_$KeychainDeriveKeypairRequestImpl(
-      serviceName: null == serviceName
-          ? _value.serviceName
-          : serviceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-      pathSuffix: null == pathSuffix
-          ? _value.pathSuffix
-          : pathSuffix // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$KeychainDeriveKeypairRequestImpl extends _KeychainDeriveKeypairRequest {
-  const _$KeychainDeriveKeypairRequestImpl(
-      {required this.serviceName, this.index = 0, this.pathSuffix = ''})
-      : super._();
 
-  factory _$KeychainDeriveKeypairRequestImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$KeychainDeriveKeypairRequestImplFromJson(json);
+class _KeychainDeriveKeypairRequest extends KeychainDeriveKeypairRequest {
+  const _KeychainDeriveKeypairRequest({required this.serviceName, this.index = 0, this.pathSuffix = ''}): super._();
+  factory _KeychainDeriveKeypairRequest.fromJson(Map<String, dynamic> json) => _$KeychainDeriveKeypairRequestFromJson(json);
 
-  @override
-  final String serviceName;
-  @override
-  @JsonKey()
-  final int index;
-  @override
-  @JsonKey()
-  final String pathSuffix;
+@override final  String serviceName;
+@override@JsonKey() final  int index;
+@override@JsonKey() final  String pathSuffix;
 
-  @override
-  String toString() {
-    return 'KeychainDeriveKeypairRequest(serviceName: $serviceName, index: $index, pathSuffix: $pathSuffix)';
-  }
+/// Create a copy of KeychainDeriveKeypairRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$KeychainDeriveKeypairRequestCopyWith<_KeychainDeriveKeypairRequest> get copyWith => __$KeychainDeriveKeypairRequestCopyWithImpl<_KeychainDeriveKeypairRequest>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$KeychainDeriveKeypairRequestImpl &&
-            (identical(other.serviceName, serviceName) ||
-                other.serviceName == serviceName) &&
-            (identical(other.index, index) || other.index == index) &&
-            (identical(other.pathSuffix, pathSuffix) ||
-                other.pathSuffix == pathSuffix));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, serviceName, index, pathSuffix);
-
-  /// Create a copy of KeychainDeriveKeypairRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$KeychainDeriveKeypairRequestImplCopyWith<
-          _$KeychainDeriveKeypairRequestImpl>
-      get copyWith => __$$KeychainDeriveKeypairRequestImplCopyWithImpl<
-          _$KeychainDeriveKeypairRequestImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$KeychainDeriveKeypairRequestImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$KeychainDeriveKeypairRequestToJson(this, );
 }
 
-abstract class _KeychainDeriveKeypairRequest
-    extends KeychainDeriveKeypairRequest {
-  const factory _KeychainDeriveKeypairRequest(
-      {required final String serviceName,
-      final int index,
-      final String pathSuffix}) = _$KeychainDeriveKeypairRequestImpl;
-  const _KeychainDeriveKeypairRequest._() : super._();
-
-  factory _KeychainDeriveKeypairRequest.fromJson(Map<String, dynamic> json) =
-      _$KeychainDeriveKeypairRequestImpl.fromJson;
-
-  @override
-  String get serviceName;
-  @override
-  int get index;
-  @override
-  String get pathSuffix;
-
-  /// Create a copy of KeychainDeriveKeypairRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$KeychainDeriveKeypairRequestImplCopyWith<
-          _$KeychainDeriveKeypairRequestImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _KeychainDeriveKeypairRequest&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.index, index) || other.index == index)&&(identical(other.pathSuffix, pathSuffix) || other.pathSuffix == pathSuffix));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,serviceName,index,pathSuffix);
+
+@override
+String toString() {
+  return 'KeychainDeriveKeypairRequest(serviceName: $serviceName, index: $index, pathSuffix: $pathSuffix)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$KeychainDeriveKeypairRequestCopyWith<$Res> implements $KeychainDeriveKeypairRequestCopyWith<$Res> {
+  factory _$KeychainDeriveKeypairRequestCopyWith(_KeychainDeriveKeypairRequest value, $Res Function(_KeychainDeriveKeypairRequest) _then) = __$KeychainDeriveKeypairRequestCopyWithImpl;
+@override @useResult
+$Res call({
+ String serviceName, int index, String pathSuffix
+});
+
+
+
+
+}
+/// @nodoc
+class __$KeychainDeriveKeypairRequestCopyWithImpl<$Res>
+    implements _$KeychainDeriveKeypairRequestCopyWith<$Res> {
+  __$KeychainDeriveKeypairRequestCopyWithImpl(this._self, this._then);
+
+  final _KeychainDeriveKeypairRequest _self;
+  final $Res Function(_KeychainDeriveKeypairRequest) _then;
+
+/// Create a copy of KeychainDeriveKeypairRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? serviceName = null,Object? index = null,Object? pathSuffix = null,}) {
+  return _then(_KeychainDeriveKeypairRequest(
+serviceName: null == serviceName ? _self.serviceName : serviceName // ignore: cast_nullable_to_non_nullable
+as String,index: null == index ? _self.index : index // ignore: cast_nullable_to_non_nullable
+as int,pathSuffix: null == pathSuffix ? _self.pathSuffix : pathSuffix // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

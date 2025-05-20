@@ -51,7 +51,7 @@ class _SignPayloadsTabState extends State<SignPayloadsTab> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -92,7 +92,7 @@ class _SignPayloadsTabState extends State<SignPayloadsTab> {
                 final response = await widget.aewalletClient
                     .signPayloads(signPayloadRequest);
                 response.when(
-                  failure: (failure) {
+                  failure: (final failure) {
                     _logger.severe(
                       'Command failed',
                       failure,
@@ -103,7 +103,7 @@ class _SignPayloadsTabState extends State<SignPayloadsTab> {
                       ),
                     );
                   },
-                  success: (result) {
+                  success: (final result) {
                     _logger.info(
                       'Command succeed : ${json.encode(result)}',
                     );
@@ -133,7 +133,9 @@ class _SignPayloadsTabState extends State<SignPayloadsTab> {
                   },
                 );
               } catch (e) {
-                if (!context.mounted) return;
+                if (!context.mounted) {
+                  return;
+                }
                 ScaffoldMessenger.of(context).showSnackBar(
                   ResultSnackbar.error(e.toString()),
                 );

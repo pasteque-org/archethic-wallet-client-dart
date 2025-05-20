@@ -51,7 +51,7 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -81,7 +81,7 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
                 );
 
                 response.when(
-                  failure: (failure) {
+                  failure: (final failure) {
                     _logger.severe(
                       'Transaction failed',
                       failure,
@@ -92,7 +92,7 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
                       ),
                     );
                   },
-                  success: (result) {
+                  success: (final result) {
                     _logger.info(
                       'Transaction succeed : ${json.encode(result)}',
                     );
@@ -101,8 +101,10 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
                     );
                   },
                 );
-              } catch (e) {
-                if (!context.mounted) return;
+              } on Exception catch (e) {
+                if (!context.mounted) {
+                  return;
+                }
                 ScaffoldMessenger.of(context).showSnackBar(
                   ResultSnackbar.error(e.toString()),
                 );

@@ -30,8 +30,8 @@ extension FutureResult<ValueT, FailureT extends Exception>
 /// Can be a success or a failure.
 @immutable
 abstract class Result<ValueT, FailureT extends Exception> {
-  const factory Result.success(ValueT value) = ResultSuccess;
-  const factory Result.failure(FailureT failure) = ResultFailure;
+  const factory Result.success(final ValueT value) = ResultSuccess;
+  const factory Result.failure(final FailureT failure) = ResultFailure;
 
   ValueT? get valueOrNull;
   FailureT? get failureOrNull;
@@ -40,13 +40,13 @@ abstract class Result<ValueT, FailureT extends Exception> {
   bool get isFailure;
 
   T when<T>({
-    required T Function(ValueT value) success,
-    required T Function(FailureT failure) failure,
+    required final T Function(ValueT value) success,
+    required final T Function(FailureT failure) failure,
   });
 
   T map<T>({
-    required T Function(ResultSuccess<ValueT, FailureT> result) success,
-    required T Function(ResultFailure<ValueT, FailureT> result) failure,
+    required final T Function(ResultSuccess<ValueT, FailureT> result) success,
+    required final T Function(ResultFailure<ValueT, FailureT> result) failure,
   });
 
   /// Returns the value if it is a success.
@@ -59,16 +59,14 @@ abstract class Result<ValueT, FailureT extends Exception> {
   ///    - expected error type is [Failure].
   ///    - you don't need to handle specific error cases.
   static Future<Result<ValueT, Failure>> guard<ValueT>(
-    Future<ValueT> Function() run,
+    final Future<ValueT> Function() run,
   ) async {
     try {
       return Result.success(await run());
     } on Failure catch (e) {
       return Result.failure(e);
-    } catch (e) {
-      return const Result.failure(
-        Failure.other,
-      );
+    } on Exception catch (_) {
+      return const Result.failure(Failure.other);
     }
   }
 }
@@ -96,17 +94,15 @@ class ResultSuccess<ValueT, FailureT extends Exception>
 
   @override
   T when<T>({
-    required T Function(ValueT value) success,
-    required T Function(FailureT failure) failure,
-  }) =>
-      success(value);
+    required final T Function(ValueT value) success,
+    required final T Function(FailureT failure) failure,
+  }) => success(value);
 
   @override
   T map<T>({
-    required T Function(ResultSuccess<ValueT, FailureT> result) success,
-    required T Function(ResultFailure<ValueT, FailureT> result) failure,
-  }) =>
-      success(this);
+    required final T Function(ResultSuccess<ValueT, FailureT> result) success,
+    required final T Function(ResultFailure<ValueT, FailureT> result) failure,
+  }) => success(this);
 }
 
 class ResultFailure<ValueT, FailureT extends Exception>
@@ -132,15 +128,13 @@ class ResultFailure<ValueT, FailureT extends Exception>
 
   @override
   T when<T>({
-    required T Function(ValueT value) success,
-    required T Function(FailureT failure) failure,
-  }) =>
-      failure(this.failure);
+    required final T Function(ValueT value) success,
+    required final T Function(FailureT failure) failure,
+  }) => failure(this.failure);
 
   @override
   T map<T>({
-    required T Function(ResultSuccess<ValueT, FailureT> result) success,
-    required T Function(ResultFailure<ValueT, FailureT> result) failure,
-  }) =>
-      failure(this);
+    required final T Function(ResultSuccess<ValueT, FailureT> result) success,
+    required final T Function(ResultFailure<ValueT, FailureT> result) failure,
+  }) => failure(this);
 }

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,159 +10,139 @@ part of 'add_service.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AddServiceRequest _$AddServiceRequestFromJson(Map<String, dynamic> json) {
-  return _AddServiceRequest.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AddServiceRequest {
-  String get name => throw _privateConstructorUsedError;
+
+ String get name;
+/// Create a copy of AddServiceRequest
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AddServiceRequestCopyWith<AddServiceRequest> get copyWith => _$AddServiceRequestCopyWithImpl<AddServiceRequest>(this as AddServiceRequest, _$identity);
 
   /// Serializes this AddServiceRequest to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of AddServiceRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AddServiceRequestCopyWith<AddServiceRequest> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddServiceRequest&&(identical(other.name, name) || other.name == name));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name);
+
+@override
+String toString() {
+  return 'AddServiceRequest(name: $name)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AddServiceRequestCopyWith<$Res> {
-  factory $AddServiceRequestCopyWith(
-          AddServiceRequest value, $Res Function(AddServiceRequest) then) =
-      _$AddServiceRequestCopyWithImpl<$Res, AddServiceRequest>;
-  @useResult
-  $Res call({String name});
-}
+abstract mixin class $AddServiceRequestCopyWith<$Res>  {
+  factory $AddServiceRequestCopyWith(AddServiceRequest value, $Res Function(AddServiceRequest) _then) = _$AddServiceRequestCopyWithImpl;
+@useResult
+$Res call({
+ String name
+});
 
+
+
+
+}
 /// @nodoc
-class _$AddServiceRequestCopyWithImpl<$Res, $Val extends AddServiceRequest>
+class _$AddServiceRequestCopyWithImpl<$Res>
     implements $AddServiceRequestCopyWith<$Res> {
-  _$AddServiceRequestCopyWithImpl(this._value, this._then);
+  _$AddServiceRequestCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AddServiceRequest _self;
+  final $Res Function(AddServiceRequest) _then;
 
-  /// Create a copy of AddServiceRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of AddServiceRequest
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,}) {
+  return _then(_self.copyWith(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$AddServiceRequestImplCopyWith<$Res>
-    implements $AddServiceRequestCopyWith<$Res> {
-  factory _$$AddServiceRequestImplCopyWith(_$AddServiceRequestImpl value,
-          $Res Function(_$AddServiceRequestImpl) then) =
-      __$$AddServiceRequestImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name});
 }
 
-/// @nodoc
-class __$$AddServiceRequestImplCopyWithImpl<$Res>
-    extends _$AddServiceRequestCopyWithImpl<$Res, _$AddServiceRequestImpl>
-    implements _$$AddServiceRequestImplCopyWith<$Res> {
-  __$$AddServiceRequestImplCopyWithImpl(_$AddServiceRequestImpl _value,
-      $Res Function(_$AddServiceRequestImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AddServiceRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-  }) {
-    return _then(_$AddServiceRequestImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$AddServiceRequestImpl extends _AddServiceRequest {
-  const _$AddServiceRequestImpl({required this.name}) : super._();
 
-  factory _$AddServiceRequestImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AddServiceRequestImplFromJson(json);
+class _AddServiceRequest extends AddServiceRequest {
+  const _AddServiceRequest({required this.name}): super._();
+  factory _AddServiceRequest.fromJson(Map<String, dynamic> json) => _$AddServiceRequestFromJson(json);
 
-  @override
-  final String name;
+@override final  String name;
 
-  @override
-  String toString() {
-    return 'AddServiceRequest(name: $name)';
-  }
+/// Create a copy of AddServiceRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AddServiceRequestCopyWith<_AddServiceRequest> get copyWith => __$AddServiceRequestCopyWithImpl<_AddServiceRequest>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddServiceRequestImpl &&
-            (identical(other.name, name) || other.name == name));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, name);
-
-  /// Create a copy of AddServiceRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddServiceRequestImplCopyWith<_$AddServiceRequestImpl> get copyWith =>
-      __$$AddServiceRequestImplCopyWithImpl<_$AddServiceRequestImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AddServiceRequestImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$AddServiceRequestToJson(this, );
 }
 
-abstract class _AddServiceRequest extends AddServiceRequest {
-  const factory _AddServiceRequest({required final String name}) =
-      _$AddServiceRequestImpl;
-  const _AddServiceRequest._() : super._();
-
-  factory _AddServiceRequest.fromJson(Map<String, dynamic> json) =
-      _$AddServiceRequestImpl.fromJson;
-
-  @override
-  String get name;
-
-  /// Create a copy of AddServiceRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddServiceRequestImplCopyWith<_$AddServiceRequestImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddServiceRequest&&(identical(other.name, name) || other.name == name));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name);
+
+@override
+String toString() {
+  return 'AddServiceRequest(name: $name)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AddServiceRequestCopyWith<$Res> implements $AddServiceRequestCopyWith<$Res> {
+  factory _$AddServiceRequestCopyWith(_AddServiceRequest value, $Res Function(_AddServiceRequest) _then) = __$AddServiceRequestCopyWithImpl;
+@override @useResult
+$Res call({
+ String name
+});
+
+
+
+
+}
+/// @nodoc
+class __$AddServiceRequestCopyWithImpl<$Res>
+    implements _$AddServiceRequestCopyWith<$Res> {
+  __$AddServiceRequestCopyWithImpl(this._self, this._then);
+
+  final _AddServiceRequest _self;
+  final $Res Function(_AddServiceRequest) _then;
+
+/// Create a copy of AddServiceRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,}) {
+  return _then(_AddServiceRequest(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on
