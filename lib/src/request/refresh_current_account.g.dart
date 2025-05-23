@@ -6,18 +6,18 @@ part of 'refresh_current_account.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RefreshCurrentAccountRequestImpl _$$RefreshCurrentAccountRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$RefreshCurrentAccountRequestImpl();
+_RefreshCurrentAccountRequest _$RefreshCurrentAccountRequestFromJson(
+  Map<String, dynamic> json,
+) => _RefreshCurrentAccountRequest();
 
-Map<String, dynamic> _$$RefreshCurrentAccountRequestImplToJson(
-        _$RefreshCurrentAccountRequestImpl instance) =>
-    <String, dynamic>{};
+Map<String, dynamic> _$RefreshCurrentAccountRequestToJson(
+  _RefreshCurrentAccountRequest instance,
+) => <String, dynamic>{};
 
-_$RefreshCurrentAccountResponseImpl
-    _$$RefreshCurrentAccountResponseImplFromJson(Map<String, dynamic> json) =>
-        _$RefreshCurrentAccountResponseImpl();
+_RefreshCurrentAccountResponse _$RefreshCurrentAccountResponseFromJson(
+  Map<String, dynamic> json,
+) => _RefreshCurrentAccountResponse();
 
-Map<String, dynamic> _$$RefreshCurrentAccountResponseImplToJson(
-        _$RefreshCurrentAccountResponseImpl instance) =>
-    <String, dynamic>{};
+Map<String, dynamic> _$RefreshCurrentAccountResponseToJson(
+  _RefreshCurrentAccountResponse instance,
+) => <String, dynamic>{};

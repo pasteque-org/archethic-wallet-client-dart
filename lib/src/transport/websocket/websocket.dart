@@ -2,20 +2,19 @@ part of '../archethic_wallet_client.dart';
 
 class WebsocketArchethicDappClient extends AWCJsonRPCClient
     implements ArchethicDAppClient {
-  WebsocketArchethicDappClient({
-    required super.origin,
-  }) : super(
-          channelBuilder: () async {
-            final socket = await _channelBuildAndConnect();
-            return socket.cast<String>();
-          },
-          disposeChannel: (channel) {},
-        );
+  WebsocketArchethicDappClient({required super.origin})
+    : super(
+        channelBuilder: () async {
+          final socket = await _channelBuildAndConnect();
+          return socket.cast<String>();
+        },
+        disposeChannel: (final channel) {
+          return null;
+        },
+      );
 
   static Future<WebSocketChannel> _channelBuildAndConnect() async {
-    final socket = WebSocketChannel.connect(
-      Uri.parse('ws://127.0.0.1:12345'),
-    );
+    final socket = WebSocketChannel.connect(Uri.parse('ws://127.0.0.1:12345'));
     await socket.ready;
     return socket;
   }
@@ -25,7 +24,7 @@ class WebsocketArchethicDappClient extends AWCJsonRPCClient
       final channel = await _channelBuildAndConnect();
       await channel.sink.close();
       return true;
-    } catch (e) {
+    } on Exception catch (_) {
       return false;
     }
   }

@@ -3,59 +3,83 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'sign_payloads.freezed.dart';
 part 'sign_payloads.g.dart';
 
+/// Represents the result of a sign payloads operation.
 @freezed
-class SignPayloadsResult with _$SignPayloadsResult {
+abstract class SignPayloadsResult with _$SignPayloadsResult {
+  /// Creates a [SignPayloadsResult] instance.
+  ///
+  /// [signedPayloads] is a list of details for each signed payload.
   const factory SignPayloadsResult({
-    required List<SignPayloadsResultDetail> signedPayloads,
+    required final List<SignPayloadsResultDetail> signedPayloads,
   }) = _SignPayloadsResult;
   const SignPayloadsResult._();
 
-  factory SignPayloadsResult.fromJson(Map<String, dynamic> json) =>
+  /// Creates a [SignPayloadsResult] instance from a JSON object.
+  factory SignPayloadsResult.fromJson(final Map<String, dynamic> json) =>
       _$SignPayloadsResultFromJson(json);
 }
 
+/// Represents the details of a single signed payload.
 @freezed
-class SignPayloadsResultDetail with _$SignPayloadsResultDetail {
+abstract class SignPayloadsResultDetail with _$SignPayloadsResultDetail {
+  /// Creates a [SignPayloadsResultDetail] instance.
+  ///
+  /// [signedPayload] is the signature of the payload.
   const factory SignPayloadsResultDetail({
     /// Signature of payload
-    required String signedPayload,
+    required final String signedPayload,
   }) = _SignPayloadsResultDetail;
   const SignPayloadsResultDetail._();
 
-  factory SignPayloadsResultDetail.fromJson(Map<String, dynamic> json) =>
+  /// Creates a [SignPayloadsResultDetail] instance from a JSON object.
+  factory SignPayloadsResultDetail.fromJson(final Map<String, dynamic> json) =>
       _$SignPayloadsResultDetailFromJson(json);
 }
 
+/// Represents the data for a single payload to be signed.
 @freezed
-class SignPayloadRequestData with _$SignPayloadRequestData {
+abstract class SignPayloadRequestData with _$SignPayloadRequestData {
+  /// Creates a [SignPayloadRequestData] instance.
+  ///
+  /// [payload] is the payload string to be signed.
+  /// [isHexa] indicates if the [payload] is in hexadecimal format.
   const factory SignPayloadRequestData({
-    required String payload,
-    required bool isHexa,
+    required final String payload,
+    required final bool isHexa,
   }) = _SignPayloadRequestData;
   const SignPayloadRequestData._();
 
-  factory SignPayloadRequestData.fromJson(Map<String, dynamic> json) =>
+  /// Creates a [SignPayloadRequestData] instance from a JSON object.
+  factory SignPayloadRequestData.fromJson(final Map<String, dynamic> json) =>
       _$SignPayloadRequestDataFromJson(json);
 }
 
+/// Represents a request to sign one or more payloads.
 @freezed
-class SignPayloadRequest with _$SignPayloadRequest {
+abstract class SignPayloadRequest with _$SignPayloadRequest {
+  /// Creates a [SignPayloadRequest] instance.
+  ///
+  /// [serviceName] is the name of the service to use for identifying the derivation path.
+  /// [pathSuffix] is an optional additional string to append to the service derivation path.
+  /// [description] is an optional map of localized descriptions explaining the purpose of the signature.
+  /// [payloads] is a list of [SignPayloadRequestData] objects to be signed.
   const factory SignPayloadRequest({
     /// Service name to identify the derivation path to use
-    required String serviceName,
+    required final String serviceName,
 
     /// Additional information to add to a service derivation path (optional - default to empty)
-    @Default('') String pathSuffix,
+    @Default('') final String pathSuffix,
 
     /// Description to explain the signature in multiple languages (key=Locale, value=description)
-    @Default({}) Map<String, dynamic> description,
+    @Default({}) final Map<String, dynamic> description,
 
     /// - List of payloads to sign
-    @Default([]) List<SignPayloadRequestData> payloads,
+    @Default([]) final List<SignPayloadRequestData> payloads,
   }) = _SignPayloadRequest;
 
   const SignPayloadRequest._();
 
-  factory SignPayloadRequest.fromJson(Map<String, dynamic> json) =>
+  /// Creates a [SignPayloadRequest] instance from a JSON object.
+  factory SignPayloadRequest.fromJson(final Map<String, dynamic> json) =>
       _$SignPayloadRequestFromJson(json);
 }

@@ -48,22 +48,25 @@ class ArchethicDAppTransportMethodsReport {
   });
 
   static Future<ArchethicDAppTransportMethodsReport> check(
-    List<ArchethicDAppTransportMethods> authorizedMethods,
-  ) async =>
-      ArchethicDAppTransportMethodsReport(
-        webBrowserExtension: authorizedMethods
-                .contains(ArchethicDAppTransportMethods.webBrowserExtension) &&
-            WebBrowserExtensionDappClient.isAvailable,
-        websocket: authorizedMethods
-                .contains(ArchethicDAppTransportMethods.websocket) &&
-            await WebsocketArchethicDappClient.isAvailable,
-        deeplink: authorizedMethods
-                .contains(ArchethicDAppTransportMethods.deeplink) &&
-            await DeeplinkArchethicDappClient.isAvailable,
-        messageChannel: authorizedMethods
-                .contains(ArchethicDAppTransportMethods.messageChannel) &&
-            MessageChannelArchethicDappClient.isAvailable,
-      );
+    final List<ArchethicDAppTransportMethods> authorizedMethods,
+  ) async => ArchethicDAppTransportMethodsReport(
+    webBrowserExtension:
+        authorizedMethods.contains(
+          ArchethicDAppTransportMethods.webBrowserExtension,
+        ) &&
+        WebBrowserExtensionDappClient.isAvailable,
+    websocket:
+        authorizedMethods.contains(ArchethicDAppTransportMethods.websocket) &&
+        await WebsocketArchethicDappClient.isAvailable,
+    deeplink:
+        authorizedMethods.contains(ArchethicDAppTransportMethods.deeplink) &&
+        await DeeplinkArchethicDappClient.isAvailable,
+    messageChannel:
+        authorizedMethods.contains(
+          ArchethicDAppTransportMethods.messageChannel,
+        ) &&
+        MessageChannelArchethicDappClient.isAvailable,
+  );
 
   final bool webBrowserExtension;
   final bool websocket;
@@ -80,26 +83,25 @@ class ArchethicDAppTransportMethodsReport {
 ''';
   }
 
-  String _availabilityIcon(bool isAvailable) => isAvailable ? '✅' : '⛔️';
+  String _availabilityIcon(final bool isAvailable) => isAvailable ? '✅' : '⛔️';
 }
 
 abstract class ArchethicDAppClient {
   factory ArchethicDAppClient.webBrowserExtension({
-    required RequestOrigin origin,
+    required final RequestOrigin origin,
   }) = WebBrowserExtensionDappClient;
 
   factory ArchethicDAppClient.messageChannel({
-    required RequestOrigin origin,
+    required final RequestOrigin origin,
   }) = MessageChannelArchethicDappClient;
 
   factory ArchethicDAppClient.deeplink({
-    required RequestOrigin origin,
-    required String replyBaseUrl,
+    required final RequestOrigin origin,
+    required final String replyBaseUrl,
   }) = DeeplinkArchethicDappClient;
 
-  factory ArchethicDAppClient.websocket({
-    required RequestOrigin origin,
-  }) = WebsocketArchethicDappClient;
+  factory ArchethicDAppClient.websocket({required final RequestOrigin origin}) =
+      WebsocketArchethicDappClient;
 
   ArchethicDAppClient._();
 
@@ -107,9 +109,9 @@ abstract class ArchethicDAppClient {
   /// to current Platform capabilities.
   /// You can whiltelist authorized transport methods using [authorizedMethods] parameter.
   static Future<ArchethicDAppClient> auto({
-    required RequestOrigin origin,
-    required String replyBaseUrl,
-    List<ArchethicDAppTransportMethods> authorizedMethods =
+    required final RequestOrigin origin,
+    required final String replyBaseUrl,
+    final List<ArchethicDAppTransportMethods> authorizedMethods =
         ArchethicDAppTransportMethods.values,
   }) async {
     final transportMethodsReport =
@@ -143,9 +145,7 @@ $transportMethodsReport
       );
     }
 
-    throw Exception(
-      'Found no way to connect to archethic wallet.',
-    );
+    throw Exception('Found no way to connect to archethic wallet.');
   }
 
   static final _logger = Logger('AWC-ArchethicWalletClient');
@@ -160,58 +160,58 @@ $transportMethodsReport
   Future<Result<GetEndpointResult, Failure>> getEndpoint();
 
   Future<Result<RefreshCurrentAccountResponse, Failure>>
-      refreshCurrentAccount();
+  refreshCurrentAccount();
 
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
-    String accountName,
+    final String accountName,
   );
 
   Future<Result<Subscription<Account>, Failure>> subscribeCurrentAccount();
 
-  Future<void> unsubscribeCurrentAccount(String subscriptionId);
+  Future<void> unsubscribeCurrentAccount(final String subscriptionId);
 
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
-    SendTransactionRequest data,
+    final SendTransactionRequest data,
   );
 
   Future<Result<GetAccountsResult, Failure>> getAccounts();
 
   Future<Result<GetCurrentAccountResult, Failure>> getCurrentAccount();
 
-  Future<void> unsubscribeAccount(String subscriptionId);
+  Future<void> unsubscribeAccount(final String subscriptionId);
 
   Future<Result<SendTransactionResult, Failure>> addService(
-    AddServiceRequest data,
+    final AddServiceRequest data,
   );
 
   Future<Result<SendTransactionResult, Failure>> removeService(
-    RemoveServiceRequest data,
+    final RemoveServiceRequest data,
   );
 
   Future<Result<GetServicesFromKeychainResult, Failure>>
-      getServicesFromKeychain();
+  getServicesFromKeychain();
 
   Future<Result<KeychainDeriveKeypairResult, Failure>> keychainDeriveKeyPair(
-    KeychainDeriveKeypairRequest data,
+    final KeychainDeriveKeypairRequest data,
   );
 
   Future<Result<KeychainDeriveAddressResult, Failure>> keychainDeriveAddress(
-    KeychainDeriveAddressRequest data,
+    final KeychainDeriveAddressRequest data,
   );
 
   Future<Result<SignTransactionsResult, Failure>> signTransactions(
-    SignTransactionRequest data,
+    final SignTransactionRequest data,
   );
 
   Future<Result<SignPayloadsResult, Failure>> signPayloads(
-    SignPayloadRequest data,
+    final SignPayloadRequest data,
   );
 
   Future<Result<EncryptPayloadsResult, Failure>> encryptPayloads(
-    EncryptPayloadRequest data,
+    final EncryptPayloadRequest data,
   );
 
   Future<Result<DecryptPayloadsResult, Failure>> decryptPayloads(
-    DecryptPayloadRequest data,
+    final DecryptPayloadRequest data,
   );
 }

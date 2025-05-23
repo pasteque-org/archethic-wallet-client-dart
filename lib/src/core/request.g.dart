@@ -6,30 +6,28 @@ part of 'request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RequestOriginImpl _$$RequestOriginImplFromJson(Map<String, dynamic> json) =>
-    _$RequestOriginImpl(
+_RequestOrigin _$RequestOriginFromJson(Map<String, dynamic> json) =>
+    _RequestOrigin(
       name: json['name'] as String,
       url: json['url'] as String?,
       logo: json['logo'] as String?,
     );
 
-Map<String, dynamic> _$$RequestOriginImplToJson(_$RequestOriginImpl instance) =>
+Map<String, dynamic> _$RequestOriginToJson(_RequestOrigin instance) =>
     <String, dynamic>{
       'name': instance.name,
       'url': instance.url,
       'logo': instance.logo,
     };
 
-_$RequestImpl _$$RequestImplFromJson(Map<String, dynamic> json) =>
-    _$RequestImpl(
-      origin: RequestOrigin.fromJson(json['origin'] as Map<String, dynamic>),
-      version: (json['version'] as num).toInt(),
-      payload: json['payload'] as Map<String, dynamic>,
-    );
+_Request _$RequestFromJson(Map<String, dynamic> json) => _Request(
+  origin: RequestOrigin.fromJson(json['origin'] as Map<String, dynamic>),
+  version: (json['version'] as num).toInt(),
+  payload: json['payload'] as Map<String, dynamic>,
+);
 
-Map<String, dynamic> _$$RequestImplToJson(_$RequestImpl instance) =>
-    <String, dynamic>{
-      'origin': instance.origin,
-      'version': instance.version,
-      'payload': instance.payload,
-    };
+Map<String, dynamic> _$RequestToJson(_Request instance) => <String, dynamic>{
+  'origin': instance.origin,
+  'version': instance.version,
+  'payload': instance.payload,
+};

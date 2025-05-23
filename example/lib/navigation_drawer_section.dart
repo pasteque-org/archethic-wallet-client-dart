@@ -8,7 +8,7 @@ class MenuDestination {
   final Widget selectedIcon;
 }
 
-const List<MenuDestination> destinationsClassic = <MenuDestination>[
+const destinationsClassic = <MenuDestination>[
   MenuDestination(
     'Get endpoint',
     Icon(Icons.arrow_right),
@@ -46,7 +46,7 @@ const List<MenuDestination> destinationsClassic = <MenuDestination>[
   ),
 ];
 
-const List<MenuDestination> destinationsSub = <MenuDestination>[
+const destinationsSub = <MenuDestination>[
   MenuDestination(
     'Account Sub',
     Icon(Icons.arrow_right),
@@ -59,7 +59,7 @@ const List<MenuDestination> destinationsSub = <MenuDestination>[
   ),
 ];
 
-const List<MenuDestination> destinationsWithConfirmation = <MenuDestination>[
+const destinationsWithConfirmation = <MenuDestination>[
   MenuDestination(
     'Send transaction',
     Icon(Icons.arrow_right),
@@ -94,8 +94,8 @@ const List<MenuDestination> destinationsWithConfirmation = <MenuDestination>[
 
 class NavigationDrawerSection extends StatefulWidget {
   const NavigationDrawerSection({
-    super.key,
     required this.onDestinationSelected,
+    super.key,
   });
   final Function(int) onDestinationSelected;
 
@@ -105,12 +105,13 @@ class NavigationDrawerSection extends StatefulWidget {
 }
 
 class _NavigationDrawerSectionState extends State<NavigationDrawerSection> {
-  int navDrawerIndex = 0;
+  // ignore: type_annotate_public_apis
+  var navDrawerIndex = 0;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return NavigationDrawer(
-      onDestinationSelected: (selectedIndex) {
+      onDestinationSelected: (final selectedIndex) {
         setState(() {
           navDrawerIndex = selectedIndex;
         });
@@ -126,7 +127,7 @@ class _NavigationDrawerSectionState extends State<NavigationDrawerSection> {
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
-        ...destinationsClassic.map((destination) {
+        ...destinationsClassic.map((final destination) {
           return NavigationDrawerDestination(
             label: Text(destination.label),
             icon: destination.icon,
@@ -141,7 +142,7 @@ class _NavigationDrawerSectionState extends State<NavigationDrawerSection> {
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
-        ...destinationsSub.map((destination) {
+        ...destinationsSub.map((final destination) {
           return NavigationDrawerDestination(
             label: Text(destination.label),
             icon: destination.icon,
@@ -156,7 +157,7 @@ class _NavigationDrawerSectionState extends State<NavigationDrawerSection> {
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
-        ...destinationsWithConfirmation.map((destination) {
+        ...destinationsWithConfirmation.map((final destination) {
           return NavigationDrawerDestination(
             label: Text(destination.label),
             icon: destination.icon,

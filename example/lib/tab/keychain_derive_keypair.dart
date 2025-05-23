@@ -40,7 +40,7 @@ class _KeychainDeriveKeypairTabState extends State<KeychainDeriveKeypairTab> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -88,7 +88,7 @@ class _KeychainDeriveKeypairTabState extends State<KeychainDeriveKeypairTab> {
                 ),
               );
               response.when(
-                failure: (failure) {
+                failure: (final failure) {
                   _logger.severe(
                     'Command failed',
                     failure,
@@ -97,7 +97,7 @@ class _KeychainDeriveKeypairTabState extends State<KeychainDeriveKeypairTab> {
                     ResultSnackbar.error(failure.message),
                   );
                 },
-                success: (result) {
+                success: (final result) {
                   _logger.info(
                     'Command succeed : ${json.encode(result)}',
                   );

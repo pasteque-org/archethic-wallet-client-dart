@@ -20,8 +20,8 @@ import 'package:flutter_dapp_example/tab/transaction_send.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({
-    super.key,
     required this.aewalletClient,
+    super.key,
   });
 
   final ArchethicDAppClient aewalletClient;
@@ -31,15 +31,16 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int navDrawerIndex = 0;
-  void _onDestinationSelected(int selectedIndex) {
+  // ignore: type_annotate_public_apis
+  var navDrawerIndex = 0;
+  void _onDestinationSelected(final int selectedIndex) {
     setState(() {
       navDrawerIndex = selectedIndex;
     });
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
@@ -80,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget getDetail(int index) {
+  Widget getDetail(final int index) {
     switch (index) {
       case 0:
         return GetEndpointTab(

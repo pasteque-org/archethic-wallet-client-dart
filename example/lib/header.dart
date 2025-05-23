@@ -5,14 +5,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class Header extends StatelessWidget {
   const Header({
-    super.key,
     required this.aewalletClient,
+    super.key,
   });
 
   final ArchethicDAppClient aewalletClient;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Container(
       height: 80,
       padding: const EdgeInsets.only(left: 15, right: 15),

@@ -9,34 +9,34 @@ import 'package:web/web.dart';
 
 class MessageChannelArchethicDappClient extends AWCJsonRPCClient
     implements ArchethicDAppClient {
-  MessageChannelArchethicDappClient({
-    required super.origin,
-  }) : super(
-          channelBuilder: () async {
-            if (awcAvailable != true) throw Failure.connectivity;
+  MessageChannelArchethicDappClient({required super.origin})
+    : super(
+        channelBuilder: () async {
+          if (awcAvailable != true) {
+            throw Failure.connectivity;
+          }
 
-            return MessagePortStreamChannel(
-              port: await asyncAWC,
-            );
-          },
-          disposeChannel: (StreamChannel<String> channel) async {
-            await (channel as MessagePortStreamChannel).dispose();
-          },
-        );
+          return MessagePortStreamChannel(port: await asyncAWC);
+        },
+        disposeChannel: (final channel) async {
+          await (channel as MessagePortStreamChannel).dispose();
+        },
+      );
 
-  static bool get isAvailable => kIsWeb && awcAvailable == true;
+  static bool get isAvailable => kIsWeb && (awcAvailable ?? false);
 }
 
 class MessagePortStreamChannel
     with StreamChannelMixin<String>
     implements StreamChannel<String> {
   MessagePortStreamChannel({required this.port}) {
-    port.onmessage = (MessageEvent message) {
-      _in.add(message.data! as String);
-    }.toJS;
+    port.onmessage =
+        (final MessageEvent message) {
+          _in.add((message.data! as JSString).toDart);
+        }.toJS;
 
-    _onPostMessageSubscription = _out.stream.listen((event) {
-      port.postMessage(event as JSAny?);
+    _onPostMessageSubscription = _out.stream.listen((final event) {
+      port.postMessage(event.toJS);
     });
   }
 

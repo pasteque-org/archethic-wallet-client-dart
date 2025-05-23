@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,371 +10,278 @@ part of 'keychain_derive_address.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-KeychainDeriveAddressResult _$KeychainDeriveAddressResultFromJson(
-    Map<String, dynamic> json) {
-  return _KeychainDeriveAddressResult.fromJson(json);
-}
 
 /// @nodoc
 mixin _$KeychainDeriveAddressResult {
-  String get address => throw _privateConstructorUsedError;
+
+ String get address;
+/// Create a copy of KeychainDeriveAddressResult
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$KeychainDeriveAddressResultCopyWith<KeychainDeriveAddressResult> get copyWith => _$KeychainDeriveAddressResultCopyWithImpl<KeychainDeriveAddressResult>(this as KeychainDeriveAddressResult, _$identity);
 
   /// Serializes this KeychainDeriveAddressResult to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of KeychainDeriveAddressResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $KeychainDeriveAddressResultCopyWith<KeychainDeriveAddressResult>
-      get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is KeychainDeriveAddressResult&&(identical(other.address, address) || other.address == address));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,address);
+
+@override
+String toString() {
+  return 'KeychainDeriveAddressResult(address: $address)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $KeychainDeriveAddressResultCopyWith<$Res> {
-  factory $KeychainDeriveAddressResultCopyWith(
-          KeychainDeriveAddressResult value,
-          $Res Function(KeychainDeriveAddressResult) then) =
-      _$KeychainDeriveAddressResultCopyWithImpl<$Res,
-          KeychainDeriveAddressResult>;
-  @useResult
-  $Res call({String address});
-}
+abstract mixin class $KeychainDeriveAddressResultCopyWith<$Res>  {
+  factory $KeychainDeriveAddressResultCopyWith(KeychainDeriveAddressResult value, $Res Function(KeychainDeriveAddressResult) _then) = _$KeychainDeriveAddressResultCopyWithImpl;
+@useResult
+$Res call({
+ String address
+});
 
+
+
+
+}
 /// @nodoc
-class _$KeychainDeriveAddressResultCopyWithImpl<$Res,
-        $Val extends KeychainDeriveAddressResult>
+class _$KeychainDeriveAddressResultCopyWithImpl<$Res>
     implements $KeychainDeriveAddressResultCopyWith<$Res> {
-  _$KeychainDeriveAddressResultCopyWithImpl(this._value, this._then);
+  _$KeychainDeriveAddressResultCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final KeychainDeriveAddressResult _self;
+  final $Res Function(KeychainDeriveAddressResult) _then;
 
-  /// Create a copy of KeychainDeriveAddressResult
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? address = null,
-  }) {
-    return _then(_value.copyWith(
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of KeychainDeriveAddressResult
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? address = null,}) {
+  return _then(_self.copyWith(
+address: null == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$KeychainDeriveAddressResultImplCopyWith<$Res>
-    implements $KeychainDeriveAddressResultCopyWith<$Res> {
-  factory _$$KeychainDeriveAddressResultImplCopyWith(
-          _$KeychainDeriveAddressResultImpl value,
-          $Res Function(_$KeychainDeriveAddressResultImpl) then) =
-      __$$KeychainDeriveAddressResultImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String address});
 }
 
-/// @nodoc
-class __$$KeychainDeriveAddressResultImplCopyWithImpl<$Res>
-    extends _$KeychainDeriveAddressResultCopyWithImpl<$Res,
-        _$KeychainDeriveAddressResultImpl>
-    implements _$$KeychainDeriveAddressResultImplCopyWith<$Res> {
-  __$$KeychainDeriveAddressResultImplCopyWithImpl(
-      _$KeychainDeriveAddressResultImpl _value,
-      $Res Function(_$KeychainDeriveAddressResultImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of KeychainDeriveAddressResult
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? address = null,
-  }) {
-    return _then(_$KeychainDeriveAddressResultImpl(
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$KeychainDeriveAddressResultImpl extends _KeychainDeriveAddressResult {
-  const _$KeychainDeriveAddressResultImpl({required this.address}) : super._();
 
-  factory _$KeychainDeriveAddressResultImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$KeychainDeriveAddressResultImplFromJson(json);
+class _KeychainDeriveAddressResult extends KeychainDeriveAddressResult {
+  const _KeychainDeriveAddressResult({required this.address}): super._();
+  factory _KeychainDeriveAddressResult.fromJson(Map<String, dynamic> json) => _$KeychainDeriveAddressResultFromJson(json);
 
-  @override
-  final String address;
+@override final  String address;
 
-  @override
-  String toString() {
-    return 'KeychainDeriveAddressResult(address: $address)';
-  }
+/// Create a copy of KeychainDeriveAddressResult
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$KeychainDeriveAddressResultCopyWith<_KeychainDeriveAddressResult> get copyWith => __$KeychainDeriveAddressResultCopyWithImpl<_KeychainDeriveAddressResult>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$KeychainDeriveAddressResultImpl &&
-            (identical(other.address, address) || other.address == address));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, address);
-
-  /// Create a copy of KeychainDeriveAddressResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$KeychainDeriveAddressResultImplCopyWith<_$KeychainDeriveAddressResultImpl>
-      get copyWith => __$$KeychainDeriveAddressResultImplCopyWithImpl<
-          _$KeychainDeriveAddressResultImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$KeychainDeriveAddressResultImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$KeychainDeriveAddressResultToJson(this, );
 }
 
-abstract class _KeychainDeriveAddressResult
-    extends KeychainDeriveAddressResult {
-  const factory _KeychainDeriveAddressResult({required final String address}) =
-      _$KeychainDeriveAddressResultImpl;
-  const _KeychainDeriveAddressResult._() : super._();
-
-  factory _KeychainDeriveAddressResult.fromJson(Map<String, dynamic> json) =
-      _$KeychainDeriveAddressResultImpl.fromJson;
-
-  @override
-  String get address;
-
-  /// Create a copy of KeychainDeriveAddressResult
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$KeychainDeriveAddressResultImplCopyWith<_$KeychainDeriveAddressResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _KeychainDeriveAddressResult&&(identical(other.address, address) || other.address == address));
 }
 
-KeychainDeriveAddressRequest _$KeychainDeriveAddressRequestFromJson(
-    Map<String, dynamic> json) {
-  return _KeychainDeriveAddressRequest.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,address);
+
+@override
+String toString() {
+  return 'KeychainDeriveAddressResult(address: $address)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$KeychainDeriveAddressResultCopyWith<$Res> implements $KeychainDeriveAddressResultCopyWith<$Res> {
+  factory _$KeychainDeriveAddressResultCopyWith(_KeychainDeriveAddressResult value, $Res Function(_KeychainDeriveAddressResult) _then) = __$KeychainDeriveAddressResultCopyWithImpl;
+@override @useResult
+$Res call({
+ String address
+});
+
+
+
+
+}
+/// @nodoc
+class __$KeychainDeriveAddressResultCopyWithImpl<$Res>
+    implements _$KeychainDeriveAddressResultCopyWith<$Res> {
+  __$KeychainDeriveAddressResultCopyWithImpl(this._self, this._then);
+
+  final _KeychainDeriveAddressResult _self;
+  final $Res Function(_KeychainDeriveAddressResult) _then;
+
+/// Create a copy of KeychainDeriveAddressResult
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? address = null,}) {
+  return _then(_KeychainDeriveAddressResult(
+address: null == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$KeychainDeriveAddressRequest {
-  String get serviceName => throw _privateConstructorUsedError;
-  int get index => throw _privateConstructorUsedError;
-  String get pathSuffix => throw _privateConstructorUsedError;
+
+ String get serviceName; int get index; String get pathSuffix;
+/// Create a copy of KeychainDeriveAddressRequest
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$KeychainDeriveAddressRequestCopyWith<KeychainDeriveAddressRequest> get copyWith => _$KeychainDeriveAddressRequestCopyWithImpl<KeychainDeriveAddressRequest>(this as KeychainDeriveAddressRequest, _$identity);
 
   /// Serializes this KeychainDeriveAddressRequest to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of KeychainDeriveAddressRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $KeychainDeriveAddressRequestCopyWith<KeychainDeriveAddressRequest>
-      get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is KeychainDeriveAddressRequest&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.index, index) || other.index == index)&&(identical(other.pathSuffix, pathSuffix) || other.pathSuffix == pathSuffix));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,serviceName,index,pathSuffix);
+
+@override
+String toString() {
+  return 'KeychainDeriveAddressRequest(serviceName: $serviceName, index: $index, pathSuffix: $pathSuffix)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $KeychainDeriveAddressRequestCopyWith<$Res> {
-  factory $KeychainDeriveAddressRequestCopyWith(
-          KeychainDeriveAddressRequest value,
-          $Res Function(KeychainDeriveAddressRequest) then) =
-      _$KeychainDeriveAddressRequestCopyWithImpl<$Res,
-          KeychainDeriveAddressRequest>;
-  @useResult
-  $Res call({String serviceName, int index, String pathSuffix});
-}
+abstract mixin class $KeychainDeriveAddressRequestCopyWith<$Res>  {
+  factory $KeychainDeriveAddressRequestCopyWith(KeychainDeriveAddressRequest value, $Res Function(KeychainDeriveAddressRequest) _then) = _$KeychainDeriveAddressRequestCopyWithImpl;
+@useResult
+$Res call({
+ String serviceName, int index, String pathSuffix
+});
 
+
+
+
+}
 /// @nodoc
-class _$KeychainDeriveAddressRequestCopyWithImpl<$Res,
-        $Val extends KeychainDeriveAddressRequest>
+class _$KeychainDeriveAddressRequestCopyWithImpl<$Res>
     implements $KeychainDeriveAddressRequestCopyWith<$Res> {
-  _$KeychainDeriveAddressRequestCopyWithImpl(this._value, this._then);
+  _$KeychainDeriveAddressRequestCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final KeychainDeriveAddressRequest _self;
+  final $Res Function(KeychainDeriveAddressRequest) _then;
 
-  /// Create a copy of KeychainDeriveAddressRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? serviceName = null,
-    Object? index = null,
-    Object? pathSuffix = null,
-  }) {
-    return _then(_value.copyWith(
-      serviceName: null == serviceName
-          ? _value.serviceName
-          : serviceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-      pathSuffix: null == pathSuffix
-          ? _value.pathSuffix
-          : pathSuffix // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of KeychainDeriveAddressRequest
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? serviceName = null,Object? index = null,Object? pathSuffix = null,}) {
+  return _then(_self.copyWith(
+serviceName: null == serviceName ? _self.serviceName : serviceName // ignore: cast_nullable_to_non_nullable
+as String,index: null == index ? _self.index : index // ignore: cast_nullable_to_non_nullable
+as int,pathSuffix: null == pathSuffix ? _self.pathSuffix : pathSuffix // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$KeychainDeriveAddressRequestImplCopyWith<$Res>
-    implements $KeychainDeriveAddressRequestCopyWith<$Res> {
-  factory _$$KeychainDeriveAddressRequestImplCopyWith(
-          _$KeychainDeriveAddressRequestImpl value,
-          $Res Function(_$KeychainDeriveAddressRequestImpl) then) =
-      __$$KeychainDeriveAddressRequestImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String serviceName, int index, String pathSuffix});
 }
 
-/// @nodoc
-class __$$KeychainDeriveAddressRequestImplCopyWithImpl<$Res>
-    extends _$KeychainDeriveAddressRequestCopyWithImpl<$Res,
-        _$KeychainDeriveAddressRequestImpl>
-    implements _$$KeychainDeriveAddressRequestImplCopyWith<$Res> {
-  __$$KeychainDeriveAddressRequestImplCopyWithImpl(
-      _$KeychainDeriveAddressRequestImpl _value,
-      $Res Function(_$KeychainDeriveAddressRequestImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of KeychainDeriveAddressRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? serviceName = null,
-    Object? index = null,
-    Object? pathSuffix = null,
-  }) {
-    return _then(_$KeychainDeriveAddressRequestImpl(
-      serviceName: null == serviceName
-          ? _value.serviceName
-          : serviceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-      pathSuffix: null == pathSuffix
-          ? _value.pathSuffix
-          : pathSuffix // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$KeychainDeriveAddressRequestImpl extends _KeychainDeriveAddressRequest {
-  const _$KeychainDeriveAddressRequestImpl(
-      {required this.serviceName, this.index = 0, this.pathSuffix = ''})
-      : super._();
 
-  factory _$KeychainDeriveAddressRequestImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$KeychainDeriveAddressRequestImplFromJson(json);
+class _KeychainDeriveAddressRequest extends KeychainDeriveAddressRequest {
+  const _KeychainDeriveAddressRequest({required this.serviceName, this.index = 0, this.pathSuffix = ''}): super._();
+  factory _KeychainDeriveAddressRequest.fromJson(Map<String, dynamic> json) => _$KeychainDeriveAddressRequestFromJson(json);
 
-  @override
-  final String serviceName;
-  @override
-  @JsonKey()
-  final int index;
-  @override
-  @JsonKey()
-  final String pathSuffix;
+@override final  String serviceName;
+@override@JsonKey() final  int index;
+@override@JsonKey() final  String pathSuffix;
 
-  @override
-  String toString() {
-    return 'KeychainDeriveAddressRequest(serviceName: $serviceName, index: $index, pathSuffix: $pathSuffix)';
-  }
+/// Create a copy of KeychainDeriveAddressRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$KeychainDeriveAddressRequestCopyWith<_KeychainDeriveAddressRequest> get copyWith => __$KeychainDeriveAddressRequestCopyWithImpl<_KeychainDeriveAddressRequest>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$KeychainDeriveAddressRequestImpl &&
-            (identical(other.serviceName, serviceName) ||
-                other.serviceName == serviceName) &&
-            (identical(other.index, index) || other.index == index) &&
-            (identical(other.pathSuffix, pathSuffix) ||
-                other.pathSuffix == pathSuffix));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, serviceName, index, pathSuffix);
-
-  /// Create a copy of KeychainDeriveAddressRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$KeychainDeriveAddressRequestImplCopyWith<
-          _$KeychainDeriveAddressRequestImpl>
-      get copyWith => __$$KeychainDeriveAddressRequestImplCopyWithImpl<
-          _$KeychainDeriveAddressRequestImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$KeychainDeriveAddressRequestImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$KeychainDeriveAddressRequestToJson(this, );
 }
 
-abstract class _KeychainDeriveAddressRequest
-    extends KeychainDeriveAddressRequest {
-  const factory _KeychainDeriveAddressRequest(
-      {required final String serviceName,
-      final int index,
-      final String pathSuffix}) = _$KeychainDeriveAddressRequestImpl;
-  const _KeychainDeriveAddressRequest._() : super._();
-
-  factory _KeychainDeriveAddressRequest.fromJson(Map<String, dynamic> json) =
-      _$KeychainDeriveAddressRequestImpl.fromJson;
-
-  @override
-  String get serviceName;
-  @override
-  int get index;
-  @override
-  String get pathSuffix;
-
-  /// Create a copy of KeychainDeriveAddressRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$KeychainDeriveAddressRequestImplCopyWith<
-          _$KeychainDeriveAddressRequestImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _KeychainDeriveAddressRequest&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.index, index) || other.index == index)&&(identical(other.pathSuffix, pathSuffix) || other.pathSuffix == pathSuffix));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,serviceName,index,pathSuffix);
+
+@override
+String toString() {
+  return 'KeychainDeriveAddressRequest(serviceName: $serviceName, index: $index, pathSuffix: $pathSuffix)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$KeychainDeriveAddressRequestCopyWith<$Res> implements $KeychainDeriveAddressRequestCopyWith<$Res> {
+  factory _$KeychainDeriveAddressRequestCopyWith(_KeychainDeriveAddressRequest value, $Res Function(_KeychainDeriveAddressRequest) _then) = __$KeychainDeriveAddressRequestCopyWithImpl;
+@override @useResult
+$Res call({
+ String serviceName, int index, String pathSuffix
+});
+
+
+
+
+}
+/// @nodoc
+class __$KeychainDeriveAddressRequestCopyWithImpl<$Res>
+    implements _$KeychainDeriveAddressRequestCopyWith<$Res> {
+  __$KeychainDeriveAddressRequestCopyWithImpl(this._self, this._then);
+
+  final _KeychainDeriveAddressRequest _self;
+  final $Res Function(_KeychainDeriveAddressRequest) _then;
+
+/// Create a copy of KeychainDeriveAddressRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? serviceName = null,Object? index = null,Object? pathSuffix = null,}) {
+  return _then(_KeychainDeriveAddressRequest(
+serviceName: null == serviceName ? _self.serviceName : serviceName // ignore: cast_nullable_to_non_nullable
+as String,index: null == index ? _self.index : index // ignore: cast_nullable_to_non_nullable
+as int,pathSuffix: null == pathSuffix ? _self.pathSuffix : pathSuffix // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

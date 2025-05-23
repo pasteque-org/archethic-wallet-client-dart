@@ -1,3 +1,5 @@
+// ignore_for_file: discarded_futures
+
 import 'dart:async';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
@@ -31,7 +33,7 @@ class _CurrentAccountSubscriptionTabState
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final textTheme = Theme.of(context)
         .textTheme
         .apply(displayColor: Theme.of(context).colorScheme.onSurface);
@@ -61,11 +63,13 @@ class _CurrentAccountSubscriptionTabState
                     await widget.aewalletClient.subscribeCurrentAccount();
 
                 subscription.when(
-                  success: (success) {
+                  success: (final success) {
                     setState(() {
                       accountSub = success;
-                      accountStreamSub = success.updates.listen((event) {
-                        if (!context.mounted) return;
+                      accountStreamSub = success.updates.listen((final event) {
+                        if (!context.mounted) {
+                          return;
+                        }
                         ScaffoldMessenger.of(context).showSnackBar(
                           ResultSnackbar.update(
                             'name: ${event.name}, genesisAddress: ${event.genesisAddress}',
@@ -74,7 +78,7 @@ class _CurrentAccountSubscriptionTabState
                       });
                     });
                   },
-                  failure: (failure) {
+                  failure: (final failure) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       ResultSnackbar.error(
                         failure.message,

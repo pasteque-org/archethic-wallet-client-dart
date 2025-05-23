@@ -6,38 +6,32 @@ part of 'get_accounts.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AppAccountImpl _$$AppAccountImplFromJson(Map<String, dynamic> json) =>
-    _$AppAccountImpl(
-      shortName: json['shortName'] as String,
-      serviceName: json['serviceName'] as String,
-      genesisAddress: json['genesisAddress'] as String,
-    );
+_AppAccount _$AppAccountFromJson(Map<String, dynamic> json) => _AppAccount(
+  shortName: json['shortName'] as String,
+  serviceName: json['serviceName'] as String,
+  genesisAddress: json['genesisAddress'] as String,
+);
 
-Map<String, dynamic> _$$AppAccountImplToJson(_$AppAccountImpl instance) =>
+Map<String, dynamic> _$AppAccountToJson(_AppAccount instance) =>
     <String, dynamic>{
       'shortName': instance.shortName,
       'serviceName': instance.serviceName,
       'genesisAddress': instance.genesisAddress,
     };
 
-_$GetAccountsResultImpl _$$GetAccountsResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$GetAccountsResultImpl(
-      accounts: (json['accounts'] as List<dynamic>)
-          .map((e) => AppAccount.fromJson(e as Map<String, dynamic>))
-          .toList(),
+_GetAccountsResult _$GetAccountsResultFromJson(Map<String, dynamic> json) =>
+    _GetAccountsResult(
+      accounts:
+          (json['accounts'] as List<dynamic>)
+              .map((e) => AppAccount.fromJson(e as Map<String, dynamic>))
+              .toList(),
     );
 
-Map<String, dynamic> _$$GetAccountsResultImplToJson(
-        _$GetAccountsResultImpl instance) =>
-    <String, dynamic>{
-      'accounts': instance.accounts,
-    };
+Map<String, dynamic> _$GetAccountsResultToJson(_GetAccountsResult instance) =>
+    <String, dynamic>{'accounts': instance.accounts};
 
-_$GetAccountsRequestImpl _$$GetAccountsRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$GetAccountsRequestImpl();
+_GetAccountsRequest _$GetAccountsRequestFromJson(Map<String, dynamic> json) =>
+    _GetAccountsRequest();
 
-Map<String, dynamic> _$$GetAccountsRequestImplToJson(
-        _$GetAccountsRequestImpl instance) =>
+Map<String, dynamic> _$GetAccountsRequestToJson(_GetAccountsRequest instance) =>
     <String, dynamic>{};

@@ -1,6 +1,17 @@
 part of '../archethic_wallet_client.dart';
 
+/// Abstract base class for Archethic Wallet Client (AWC) implementations using JSON-RPC.
+///
+/// This class provides the core functionality for connecting to a wallet,
+/// sending requests, and managing the connection state and subscriptions.
+/// Concrete implementations will provide specific transport mechanisms (e.g., Deeplink, WebExtension).
 abstract class AWCJsonRPCClient extends ArchethicDAppClient {
+  /// Creates an [AWCJsonRPCClient] instance.
+  ///
+  /// [channelBuilder] is a function that returns a [FutureOr] of a [StreamChannel<String>],
+  /// responsible for establishing the communication channel.
+  /// [origin] specifies the [RequestOrigin] of the DApp making the requests.
+  /// [disposeChannel] is a function responsible for cleaning up the communication channel when closed.
   AWCJsonRPCClient({
     required this.channelBuilder,
     required this.origin,
@@ -9,17 +20,27 @@ abstract class AWCJsonRPCClient extends ArchethicDAppClient {
 
   @override
   final RequestOrigin origin;
-  final FutureOr<StreamChannel<String>> Function() channelBuilder;
-  final FutureOr<void> Function(StreamChannel<String> channel) disposeChannel;
 
+  /// Function responsible for building the communication [StreamChannel<String>].
+  final FutureOr<StreamChannel<String>> Function() channelBuilder;
+
+  /// Function responsible for disposing of the communication [StreamChannel<String>].
+  final Future<void>? Function(StreamChannel<String> channel) disposeChannel;
+
+  /// The underlying JSON-RPC peer client. Null if not connected.
   Peer? _client;
+
+  /// The communication channel. Null if not connected.
   StreamChannel<String>? _channel;
+
+  /// Controller for broadcasting connection state changes.
   final _connectionStateController =
       StreamController<ArchethicDappConnectionState>.broadcast()
         ..add(const ArchethicDappConnectionState.disconnected());
 
   static final _logger = Logger('AWC-JsonRPCClient');
 
+  /// Controller for broadcasting subscription updates.
   final _subscriptionValues = StreamController<SubscriptionUpdate>.broadcast();
 
   @override
@@ -38,7 +59,10 @@ abstract class AWCJsonRPCClient extends ArchethicDAppClient {
       _connectionStateController.stream;
 
   SingletonTask<void>? __connectTask;
-  SingletonTask<void> get _connectTask => __connectTask ??= SingletonTask(
+
+  /// Singleton task to manage the connection process, ensuring it only runs once at a time.
+  SingletonTask<void> get _connectTask =>
+      __connectTask ??= SingletonTask(
         name: 'Connect',
         task: () async {
           if (_client != null && !_client!.isClosed) {
@@ -51,51 +75,65 @@ abstract class AWCJsonRPCClient extends ArchethicDAppClient {
             const ArchethicDappConnectionState.connecting(),
           );
 
-          _channel = await _connect();
-          _logger.info('Connection opened');
-          _connectionStateController.add(
-            const ArchethicDappConnectionState.connected(),
-          );
+          try {
+            _channel = await _connectInternal();
+            _logger.info('Connection opened');
+            _connectionStateController.add(
+              const ArchethicDappConnectionState.connected(),
+            );
 
-          final client = Peer(_channel!.cast<String>());
-          client.registerMethod(
-            'addSubscriptionNotification',
-            (params) {
-              _logger.info('Received value');
-              _subscriptionValues.add(
-                SubscriptionUpdate.fromJson(params.value),
-              );
-            },
-          );
-
-          _client = client;
-
-          unawaited(
-            client.listen().then(
-              (value) {
-                _logger.info(
-                  'Connection closed',
+            final client = Peer(_channel!.cast<String>())
+              ..registerMethod('addSubscriptionNotification', (final params) {
+                _logger.info('Received subscription update: ${params.value}');
+                _subscriptionValues.add(
+                  SubscriptionUpdate.fromJson(params.value),
                 );
-                _connectionStateController.add(
-                  const ArchethicDappConnectionState.disconnected(),
-                );
-              },
-            ),
-          );
+              });
+
+            _client = client;
+
+            // Listen for client closure to update connection state.
+            unawaited(
+              client
+                  .listen()
+                  .then((final value) {
+                    _logger.info('Connection closed by peer.');
+                    _connectionStateController.add(
+                      const ArchethicDappConnectionState.disconnected(),
+                    );
+                  })
+                  .catchError((dynamic error, StackTrace stackTrace) {
+                    _logger.warning(
+                      'Error while listening to client close: $error',
+                      error,
+                      stackTrace,
+                    );
+                    _connectionStateController.add(
+                      const ArchethicDappConnectionState.disconnected(),
+                    );
+                  }),
+            );
+          } catch (e) {
+            _logger.severe('Connection process failed: $e');
+            _connectionStateController.add(
+              const ArchethicDappConnectionState.disconnected(),
+            );
+            // Re-throw to allow _connectTask to report the error.
+            rethrow;
+          }
         },
       );
+
   @override
   Future<void> connect() => _connectTask.run();
 
-  Future<StreamChannel<String>> _connect() async {
+  /// Internal method to establish the stream channel.
+  /// Handles errors and updates connection state accordingly.
+  Future<StreamChannel<String>> _connectInternal() async {
     try {
       return await channelBuilder();
-    } catch (error, stack) {
-      _logger.severe(
-        'Connection failed',
-        error,
-        stack,
-      );
+    } on Exception catch (error, stack) {
+      _logger.severe('Channel builder failed', error, stack);
       _connectionStateController.add(
         const ArchethicDappConnectionState.disconnected(),
       );
@@ -104,294 +142,287 @@ abstract class AWCJsonRPCClient extends ArchethicDAppClient {
   }
 
   SingletonTask<void>? __closeTask;
-  SingletonTask<void> get _closeTask => __closeTask ??= SingletonTask(
+
+  /// Singleton task to manage the disconnection process.
+  SingletonTask<void> get _closeTask =>
+      __closeTask ??= SingletonTask(
         name: 'Close',
         task: () async {
+          _logger.info('Closing connection...');
           await _client?.close();
           _client = null;
-          await disposeChannel(_channel!);
+          if (_channel != null) {
+            await disposeChannel(_channel!);
+          }
           _channel = null;
+          _connectionStateController.add(
+            const ArchethicDappConnectionState.disconnected(),
+          );
+          _logger.info('Connection closed successfully.');
         },
       );
+
   @override
   Future<void> close() => _closeTask.run();
 
+  /// Internal method to subscribe to a method and receive updates.
+  ///
+  /// [method] is the RPC method to subscribe to.
+  /// [params] are the parameters for the subscription request.
+  /// Returns a [Subscription] object that provides the subscription ID and a stream of updates.
   Future<Subscription<Map<String, dynamic>>> _subscribe({
-    required String method,
-    Map<String, dynamic> params = const {},
+    required final String method,
+    final Map<String, dynamic> params = const {},
   }) async {
-    final subscriptionData = await _send(
-      method: method,
-      params: params,
-    );
+    final subscriptionData = await _send(method: method, params: params);
 
-    final subscriptionId = subscriptionData['subscriptionId'];
+    final subscriptionId = subscriptionData['subscriptionId'] as String?;
+    if (subscriptionId == null) {
+      _logger.severe('Subscription response did not contain a subscriptionId.');
+      throw Failure.other; // Or a more specific error
+    }
     return Subscription(
       id: subscriptionId,
       updates: _subscriptionValues.stream
-          .where((event) => event.subscriptionId == subscriptionId)
-          .map((event) => event.data),
+          .where((final event) => event.subscriptionId == subscriptionId)
+          .map((final event) => event.data),
     );
   }
 
+  /// Internal method to send a JSON-RPC request.
+  ///
+  /// Ensures the client is connected before sending.
+  /// [method] is the RPC method name.
+  /// [params] are the parameters for the RPC method.
+  /// Returns a [Future] that completes with the RPC response as a [Map<String, dynamic>].
   Future<Map<String, dynamic>> _send({
-    required String method,
-    Map<String, dynamic> params = const {},
+    required final String method,
+    final Map<String, dynamic> params = const {},
   }) async {
     if (_client == null || _client!.isClosed) {
-      _client = null;
+      _logger.info(
+        'Client not connected. Attempting to connect before sending $method.',
+      );
+      _client =
+          null; // Ensure we attempt a fresh connection if _client was closed.
       await connect();
-    }
-    _logger.info('Send command $method, params : ${jsonEncode(params)}');
-    return _client!
-        .sendRequest(
-      method,
-      Request(
-        version: 1,
-        origin: origin,
-        payload: params,
-      ).toJson(),
-    )
-        .then(
-      (result) {
-        _logger.info('Response received :  ${jsonEncode(result)}');
-        return result;
-      },
-      onError: (e, stack) {
-        if (e is StateError) {
-          _logger.severe(
-            'Bad connection state.',
-            e,
-            stack,
-          );
-          throw Failure.connectivity;
-        }
-        if (e is RpcException) {
-          _logger.severe(
-            'Rpc request failed.',
-            e,
-            stack,
-          );
-          throw Failure.fromRpcException(e);
-        }
-
+      // After connect, _client should be initialized if successful.
+      if (_client == null || _client!.isClosed) {
         _logger.severe(
-          'Rpc request failed.',
+          'Connection failed before sending $method. Throwing connectivity failure.',
+        );
+        throw Failure.connectivity;
+      }
+    }
+    _logger.info('Sending command: $method, params: ${jsonEncode(params)}');
+    try {
+      final response = await _client!.sendRequest(
+        method,
+        Request(version: 1, origin: origin, payload: params).toJson(),
+      );
+      _logger.info('Response received for $method: ${jsonEncode(response)}');
+      return response as Map<String, dynamic>;
+    } catch (e, stack) {
+      _logger.severe('Error sending request $method: $e', e, stack);
+      if (e is StateError) {
+        _logger.severe('Bad connection state during $method.', e, stack);
+        _connectionStateController.add(
+          const ArchethicDappConnectionState.disconnected(),
+        );
+        throw Failure.connectivity;
+      }
+      if (e is RpcException) {
+        _logger.severe(
+          'RpcException during $method: ${e.message} (code: ${e.code})',
           e,
           stack,
         );
-        throw Failure.other;
-      },
-    );
+        throw Failure.fromRpcException(e);
+      }
+      // For other exceptions, ensure state is updated if it implies disconnection.
+      // This is a judgment call, but if the client itself throws, it might be disconnected.
+      if (!(_client?.isClosed == false)) {
+        // if client is null or closed
+        _connectionStateController.add(
+          const ArchethicDappConnectionState.disconnected(),
+        );
+      }
+      throw Failure.other;
+    }
   }
+
+  //============================================================================
+  // RPC Method Implementations
+  //============================================================================
 
   @override
   Future<Result<GetEndpointResult, Failure>> getEndpoint() => Result.guard(
-        () => _send(method: 'getEndpoint').then(
-          (result) => GetEndpointResult.fromJson(result),
-        ),
-      );
+    () => _send(method: 'getEndpoint').then(GetEndpointResult.fromJson),
+  );
 
   @override
   Future<Result<RefreshCurrentAccountResponse, Failure>>
-      refreshCurrentAccount() => Result.guard(
-            () => _send(method: 'refreshCurrentAccount').then(
-              (result) => RefreshCurrentAccountResponse.fromJson(result),
-            ),
-          );
+  refreshCurrentAccount() => Result.guard(
+    () => _send(
+      method: 'refreshCurrentAccount',
+    ).then(RefreshCurrentAccountResponse.fromJson),
+  );
 
   @override
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
-    SendTransactionRequest data,
-  ) =>
-      Result.guard(
-        () => _send(
-          method: 'sendTransaction',
-          params: data.toJson(),
-        ).then(
-          (result) => SendTransactionResult.fromJson(result),
-        ),
-      );
+    final SendTransactionRequest data,
+  ) => Result.guard(
+    () => _send(
+      method: 'sendTransaction',
+      params: data.toJson(),
+    ).then(SendTransactionResult.fromJson),
+  );
 
   @override
   Future<Result<GetAccountsResult, Failure>> getAccounts() => Result.guard(
-        () => _send(method: 'getAccounts').then(
-          (result) => GetAccountsResult.fromJson(result),
-        ),
-      );
+    () => _send(method: 'getAccounts').then(GetAccountsResult.fromJson),
+  );
 
   @override
   Future<Result<GetCurrentAccountResult, Failure>> getCurrentAccount() =>
       Result.guard(
-        () => _send(method: 'getCurrentAccount').then(
-          (result) => GetCurrentAccountResult.fromJson(result),
-        ),
+        () => _send(
+          method: 'getCurrentAccount',
+        ).then(GetCurrentAccountResult.fromJson),
       );
 
   @override
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
-    String accountName,
-  ) async =>
-      Result.guard(
-        () async {
-          final subscriptionDTO = await _subscribe(
-            method: 'subscribeAccount',
-            params: SubscribeAccountRequest(serviceName: accountName).toJson(),
-          );
-          return Subscription(
-            id: subscriptionDTO.id,
-            updates: subscriptionDTO.updates.map((accountData) {
-              return Account.fromJson(accountData);
-            }),
-          );
-        },
-      );
+    final String accountName,
+  ) => Result.guard(() async {
+    final subscriptionDTO = await _subscribe(
+      method: 'subscribeAccount',
+      params: SubscribeAccountRequest(serviceName: accountName).toJson(),
+    );
+    return Subscription(
+      id: subscriptionDTO.id,
+      updates: subscriptionDTO.updates.map((final accountData) {
+        return Account.fromJson(accountData);
+      }),
+    );
+  });
 
   @override
-  Future<void> unsubscribeAccount(String subscriptionId) async {
+  Future<void> unsubscribeAccount(final String subscriptionId) async {
+    // Unsubscribe is best-effort, typically no response is expected other than success/failure.
     await _send(
       method: 'unsubscribeAccount',
-      params: {
-        'subscriptionId': subscriptionId,
-      },
+      params: UnsubscribeRequest(subscriptionId: subscriptionId).toJson(),
     );
   }
 
   @override
-  Future<Result<Subscription<Account>, Failure>>
-      subscribeCurrentAccount() async => Result.guard(
-            () async {
-              final subscriptionDTO = await _subscribe(
-                method: 'subscribeCurrentAccount',
-              );
-              return Subscription(
-                id: subscriptionDTO.id,
-                updates: subscriptionDTO.updates.map((accountData) {
-                  return Account.fromJson(accountData);
-                }),
-              );
-            },
-          );
+  Future<Result<Subscription<Account>, Failure>> subscribeCurrentAccount() =>
+      Result.guard(() async {
+        final subscriptionDTO = await _subscribe(
+          method: 'subscribeCurrentAccount',
+        );
+        return Subscription(
+          id: subscriptionDTO.id,
+          updates: subscriptionDTO.updates.map((final accountData) {
+            return Account.fromJson(accountData);
+          }),
+        );
+      });
 
   @override
-  Future<void> unsubscribeCurrentAccount(String subscriptionId) async {
+  Future<void> unsubscribeCurrentAccount(final String subscriptionId) async {
     await _send(
       method: 'unsubscribeCurrentAccount',
-      params: {
-        'subscriptionId': subscriptionId,
-      },
+      params: UnsubscribeRequest(subscriptionId: subscriptionId).toJson(),
     );
   }
 
   @override
   Future<Result<SendTransactionResult, Failure>> addService(
-    AddServiceRequest data,
-  ) =>
-      Result.guard(
-        () => _send(
-          method: 'addService',
-          params: data.toJson(),
-        ).then(
-          (result) => SendTransactionResult.fromJson(result),
-        ),
-      );
+    final AddServiceRequest data,
+  ) => Result.guard(
+    () => _send(
+      method: 'addService',
+      params: data.toJson(),
+    ).then(SendTransactionResult.fromJson),
+  );
 
   @override
   Future<Result<SendTransactionResult, Failure>> removeService(
-    RemoveServiceRequest data,
-  ) =>
-      Result.guard(
-        () => _send(
-          method: 'removeService',
-          params: data.toJson(),
-        ).then(
-          (result) => SendTransactionResult.fromJson(result),
-        ),
-      );
+    final RemoveServiceRequest data,
+  ) => Result.guard(
+    () => _send(
+      method: 'removeService',
+      params: data.toJson(),
+    ).then(SendTransactionResult.fromJson),
+  );
 
   @override
   Future<Result<GetServicesFromKeychainResult, Failure>>
-      getServicesFromKeychain() => Result.guard(
-            () => _send(method: 'getServicesFromKeychain').then(
-              (result) => GetServicesFromKeychainResult.fromJson(result),
-            ),
-          );
+  getServicesFromKeychain() => Result.guard(
+    () => _send(
+      method: 'getServicesFromKeychain',
+    ).then(GetServicesFromKeychainResult.fromJson),
+  );
 
   @override
   Future<Result<KeychainDeriveKeypairResult, Failure>> keychainDeriveKeyPair(
-    KeychainDeriveKeypairRequest data,
-  ) =>
-      Result.guard(
-        () => _send(
-          method: 'keychainDeriveKeypair',
-          params: data.toJson(),
-        ).then(
-          (result) => KeychainDeriveKeypairResult.fromJson(result),
-        ),
-      );
+    final KeychainDeriveKeypairRequest data,
+  ) => Result.guard(
+    () => _send(
+      method: 'keychainDeriveKeypair',
+      params: data.toJson(),
+    ).then(KeychainDeriveKeypairResult.fromJson),
+  );
 
   @override
   Future<Result<KeychainDeriveAddressResult, Failure>> keychainDeriveAddress(
-    KeychainDeriveAddressRequest data,
-  ) =>
-      Result.guard(
-        () => _send(
-          method: 'keychainDeriveAddress',
-          params: data.toJson(),
-        ).then(
-          (result) => KeychainDeriveAddressResult.fromJson(result),
-        ),
-      );
+    final KeychainDeriveAddressRequest data,
+  ) => Result.guard(
+    () => _send(
+      method: 'keychainDeriveAddress',
+      params: data.toJson(),
+    ).then(KeychainDeriveAddressResult.fromJson),
+  );
 
   @override
   Future<Result<SignTransactionsResult, Failure>> signTransactions(
-    SignTransactionRequest data,
-  ) =>
-      Result.guard(
-        () => _send(
-          method: 'signTransactions',
-          params: data.toJson(),
-        ).then(
-          (result) => SignTransactionsResult.fromJson(result),
-        ),
-      );
+    final SignTransactionRequest data,
+  ) => Result.guard(
+    () => _send(
+      method: 'signTransactions',
+      params: data.toJson(),
+    ).then(SignTransactionsResult.fromJson),
+  );
 
   @override
   Future<Result<SignPayloadsResult, Failure>> signPayloads(
-    SignPayloadRequest data,
-  ) =>
-      Result.guard(
-        () => _send(
-          method: 'signPayloads',
-          params: data.toJson(),
-        ).then(
-          (result) => SignPayloadsResult.fromJson(result),
-        ),
-      );
+    final SignPayloadRequest data,
+  ) => Result.guard(
+    () => _send(
+      method: 'signPayloads',
+      params: data.toJson(),
+    ).then(SignPayloadsResult.fromJson),
+  );
 
   @override
   Future<Result<EncryptPayloadsResult, Failure>> encryptPayloads(
-    EncryptPayloadRequest data,
-  ) =>
-      Result.guard(
-        () => _send(
-          method: 'encryptPayloads',
-          params: data.toJson(),
-        ).then(
-          (result) => EncryptPayloadsResult.fromJson(result),
-        ),
-      );
+    final EncryptPayloadRequest data,
+  ) => Result.guard(
+    () => _send(
+      method: 'encryptPayloads',
+      params: data.toJson(),
+    ).then(EncryptPayloadsResult.fromJson),
+  );
 
   @override
   Future<Result<DecryptPayloadsResult, Failure>> decryptPayloads(
-    DecryptPayloadRequest data,
-  ) =>
-      Result.guard(
-        () => _send(
-          method: 'decryptPayloads',
-          params: data.toJson(),
-        ).then(
-          (result) => DecryptPayloadsResult.fromJson(result),
-        ),
-      );
+    final DecryptPayloadRequest data,
+  ) => Result.guard(
+    () => _send(
+      method: 'decryptPayloads',
+      params: data.toJson(),
+    ).then(DecryptPayloadsResult.fromJson),
+  );
 }

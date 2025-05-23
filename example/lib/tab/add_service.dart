@@ -30,7 +30,7 @@ class _AddServiceTabState extends State<AddServiceTab> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -53,7 +53,7 @@ class _AddServiceTabState extends State<AddServiceTab> {
                 awc.AddServiceRequest(name: payloadTextController.text),
               );
               response.when(
-                failure: (failure) {
+                failure: (final failure) {
                   _logger.severe(
                     'Transaction failed',
                     failure,
@@ -62,7 +62,7 @@ class _AddServiceTabState extends State<AddServiceTab> {
                     ResultSnackbar.error(failure.message),
                   );
                 },
-                success: (result) {
+                success: (final result) {
                   _logger.info(
                     'Transaction succeed : ${json.encode(result)}',
                   );

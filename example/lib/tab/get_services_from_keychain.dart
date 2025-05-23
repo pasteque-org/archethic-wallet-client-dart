@@ -1,3 +1,5 @@
+// ignore_for_file: discarded_futures
+
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
 
@@ -10,23 +12,23 @@ class GetServicesFromKeychainTab extends StatelessWidget {
   final ArchethicDAppClient aewalletClient;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final textTheme = Theme.of(context)
         .textTheme
         .apply(displayColor: Theme.of(context).colorScheme.onSurface);
 
     return FutureBuilder(
       future: aewalletClient.getServicesFromKeychain(),
-      builder: (context, snapshot) {
+      builder: (final context, final snapshot) {
         if (!snapshot.hasData) {
           return const Center(child: CircularProgressIndicator());
         }
         return Center(
           child: snapshot.data!.when(
-            success: (success) {
+            success: (final success) {
               return ListView.builder(
                 itemCount: success.services.length,
-                itemBuilder: (BuildContext context, int index) {
+                itemBuilder: (final context, final index) {
                   return ListTile(
                     title: SelectableText(
                       '${success.services[index].derivationPath}: ${success.services[index].curve} / ${success.services[index].hashAlgo} ',
@@ -36,7 +38,7 @@ class GetServicesFromKeychainTab extends StatelessWidget {
                 },
               );
             },
-            failure: (failure) => SelectableText(
+            failure: (final failure) => SelectableText(
               'Request failed : $failure',
               style: textTheme.labelLarge,
             ),

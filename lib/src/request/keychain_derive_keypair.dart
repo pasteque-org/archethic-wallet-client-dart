@@ -3,26 +3,40 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'keychain_derive_keypair.freezed.dart';
 part 'keychain_derive_keypair.g.dart';
 
+/// Represents the result of a keychain keypair derivation operation.
 @freezed
-class KeychainDeriveKeypairResult with _$KeychainDeriveKeypairResult {
-  const factory KeychainDeriveKeypairResult({
-    required String publicKey,
-  }) = _KeychainDeriveKeypairResult;
+abstract class KeychainDeriveKeypairResult with _$KeychainDeriveKeypairResult {
+  /// Creates a [KeychainDeriveKeypairResult] instance.
+  ///
+  /// [publicKey] is the derived public key string.
+  const factory KeychainDeriveKeypairResult({required final String publicKey}) =
+      _KeychainDeriveKeypairResult;
   const KeychainDeriveKeypairResult._();
 
-  factory KeychainDeriveKeypairResult.fromJson(Map<String, dynamic> json) =>
-      _$KeychainDeriveKeypairResultFromJson(json);
+  /// Creates a [KeychainDeriveKeypairResult] instance from a JSON object.
+  factory KeychainDeriveKeypairResult.fromJson(
+    final Map<String, dynamic> json,
+  ) => _$KeychainDeriveKeypairResultFromJson(json);
 }
 
+/// Represents a request to derive a keypair using the keychain.
 @freezed
-class KeychainDeriveKeypairRequest with _$KeychainDeriveKeypairRequest {
+abstract class KeychainDeriveKeypairRequest
+    with _$KeychainDeriveKeypairRequest {
+  /// Creates a [KeychainDeriveKeypairRequest] instance.
+  ///
+  /// [serviceName] is the name of the service to use for derivation.
+  /// [index] is the chain index to derive (defaults to 0).
+  /// [pathSuffix] is an optional additional string to append to the service derivation path (defaults to empty).
   const factory KeychainDeriveKeypairRequest({
-    required String serviceName,
-    @Default(0) int index,
-    @Default('') String pathSuffix,
+    required final String serviceName,
+    @Default(0) final int index,
+    @Default('') final String pathSuffix,
   }) = _KeychainDeriveKeypairRequest;
   const KeychainDeriveKeypairRequest._();
 
-  factory KeychainDeriveKeypairRequest.fromJson(Map<String, dynamic> json) =>
-      _$KeychainDeriveKeypairRequestFromJson(json);
+  /// Creates a [KeychainDeriveKeypairRequest] instance from a JSON object.
+  factory KeychainDeriveKeypairRequest.fromJson(
+    final Map<String, dynamic> json,
+  ) => _$KeychainDeriveKeypairRequestFromJson(json);
 }

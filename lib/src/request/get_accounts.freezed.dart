@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,449 +10,352 @@ part of 'get_accounts.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AppAccount _$AppAccountFromJson(Map<String, dynamic> json) {
-  return _AppAccount.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AppAccount {
-  String get shortName => throw _privateConstructorUsedError;
-  String get serviceName => throw _privateConstructorUsedError;
-  String get genesisAddress => throw _privateConstructorUsedError;
+
+ String get shortName; String get serviceName; String get genesisAddress;
+/// Create a copy of AppAccount
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AppAccountCopyWith<AppAccount> get copyWith => _$AppAccountCopyWithImpl<AppAccount>(this as AppAccount, _$identity);
 
   /// Serializes this AppAccount to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of AppAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AppAccountCopyWith<AppAccount> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppAccount&&(identical(other.shortName, shortName) || other.shortName == shortName)&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.genesisAddress, genesisAddress) || other.genesisAddress == genesisAddress));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,shortName,serviceName,genesisAddress);
+
+@override
+String toString() {
+  return 'AppAccount(shortName: $shortName, serviceName: $serviceName, genesisAddress: $genesisAddress)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AppAccountCopyWith<$Res> {
-  factory $AppAccountCopyWith(
-          AppAccount value, $Res Function(AppAccount) then) =
-      _$AppAccountCopyWithImpl<$Res, AppAccount>;
-  @useResult
-  $Res call({String shortName, String serviceName, String genesisAddress});
-}
+abstract mixin class $AppAccountCopyWith<$Res>  {
+  factory $AppAccountCopyWith(AppAccount value, $Res Function(AppAccount) _then) = _$AppAccountCopyWithImpl;
+@useResult
+$Res call({
+ String shortName, String serviceName, String genesisAddress
+});
 
+
+
+
+}
 /// @nodoc
-class _$AppAccountCopyWithImpl<$Res, $Val extends AppAccount>
+class _$AppAccountCopyWithImpl<$Res>
     implements $AppAccountCopyWith<$Res> {
-  _$AppAccountCopyWithImpl(this._value, this._then);
+  _$AppAccountCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AppAccount _self;
+  final $Res Function(AppAccount) _then;
 
-  /// Create a copy of AppAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? shortName = null,
-    Object? serviceName = null,
-    Object? genesisAddress = null,
-  }) {
-    return _then(_value.copyWith(
-      shortName: null == shortName
-          ? _value.shortName
-          : shortName // ignore: cast_nullable_to_non_nullable
-              as String,
-      serviceName: null == serviceName
-          ? _value.serviceName
-          : serviceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      genesisAddress: null == genesisAddress
-          ? _value.genesisAddress
-          : genesisAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of AppAccount
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? shortName = null,Object? serviceName = null,Object? genesisAddress = null,}) {
+  return _then(_self.copyWith(
+shortName: null == shortName ? _self.shortName : shortName // ignore: cast_nullable_to_non_nullable
+as String,serviceName: null == serviceName ? _self.serviceName : serviceName // ignore: cast_nullable_to_non_nullable
+as String,genesisAddress: null == genesisAddress ? _self.genesisAddress : genesisAddress // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$AppAccountImplCopyWith<$Res>
-    implements $AppAccountCopyWith<$Res> {
-  factory _$$AppAccountImplCopyWith(
-          _$AppAccountImpl value, $Res Function(_$AppAccountImpl) then) =
-      __$$AppAccountImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String shortName, String serviceName, String genesisAddress});
 }
 
-/// @nodoc
-class __$$AppAccountImplCopyWithImpl<$Res>
-    extends _$AppAccountCopyWithImpl<$Res, _$AppAccountImpl>
-    implements _$$AppAccountImplCopyWith<$Res> {
-  __$$AppAccountImplCopyWithImpl(
-      _$AppAccountImpl _value, $Res Function(_$AppAccountImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AppAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? shortName = null,
-    Object? serviceName = null,
-    Object? genesisAddress = null,
-  }) {
-    return _then(_$AppAccountImpl(
-      shortName: null == shortName
-          ? _value.shortName
-          : shortName // ignore: cast_nullable_to_non_nullable
-              as String,
-      serviceName: null == serviceName
-          ? _value.serviceName
-          : serviceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      genesisAddress: null == genesisAddress
-          ? _value.genesisAddress
-          : genesisAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$AppAccountImpl extends _AppAccount {
-  const _$AppAccountImpl(
-      {required this.shortName,
-      required this.serviceName,
-      required this.genesisAddress})
-      : super._();
 
-  factory _$AppAccountImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AppAccountImplFromJson(json);
+class _AppAccount extends AppAccount {
+  const _AppAccount({required this.shortName, required this.serviceName, required this.genesisAddress}): super._();
+  factory _AppAccount.fromJson(Map<String, dynamic> json) => _$AppAccountFromJson(json);
 
-  @override
-  final String shortName;
-  @override
-  final String serviceName;
-  @override
-  final String genesisAddress;
+@override final  String shortName;
+@override final  String serviceName;
+@override final  String genesisAddress;
 
-  @override
-  String toString() {
-    return 'AppAccount(shortName: $shortName, serviceName: $serviceName, genesisAddress: $genesisAddress)';
-  }
+/// Create a copy of AppAccount
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AppAccountCopyWith<_AppAccount> get copyWith => __$AppAccountCopyWithImpl<_AppAccount>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AppAccountImpl &&
-            (identical(other.shortName, shortName) ||
-                other.shortName == shortName) &&
-            (identical(other.serviceName, serviceName) ||
-                other.serviceName == serviceName) &&
-            (identical(other.genesisAddress, genesisAddress) ||
-                other.genesisAddress == genesisAddress));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, shortName, serviceName, genesisAddress);
-
-  /// Create a copy of AppAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AppAccountImplCopyWith<_$AppAccountImpl> get copyWith =>
-      __$$AppAccountImplCopyWithImpl<_$AppAccountImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AppAccountImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$AppAccountToJson(this, );
 }
 
-abstract class _AppAccount extends AppAccount {
-  const factory _AppAccount(
-      {required final String shortName,
-      required final String serviceName,
-      required final String genesisAddress}) = _$AppAccountImpl;
-  const _AppAccount._() : super._();
-
-  factory _AppAccount.fromJson(Map<String, dynamic> json) =
-      _$AppAccountImpl.fromJson;
-
-  @override
-  String get shortName;
-  @override
-  String get serviceName;
-  @override
-  String get genesisAddress;
-
-  /// Create a copy of AppAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AppAccountImplCopyWith<_$AppAccountImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppAccount&&(identical(other.shortName, shortName) || other.shortName == shortName)&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.genesisAddress, genesisAddress) || other.genesisAddress == genesisAddress));
 }
 
-GetAccountsResult _$GetAccountsResultFromJson(Map<String, dynamic> json) {
-  return _GetAccountsResult.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,shortName,serviceName,genesisAddress);
+
+@override
+String toString() {
+  return 'AppAccount(shortName: $shortName, serviceName: $serviceName, genesisAddress: $genesisAddress)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AppAccountCopyWith<$Res> implements $AppAccountCopyWith<$Res> {
+  factory _$AppAccountCopyWith(_AppAccount value, $Res Function(_AppAccount) _then) = __$AppAccountCopyWithImpl;
+@override @useResult
+$Res call({
+ String shortName, String serviceName, String genesisAddress
+});
+
+
+
+
+}
+/// @nodoc
+class __$AppAccountCopyWithImpl<$Res>
+    implements _$AppAccountCopyWith<$Res> {
+  __$AppAccountCopyWithImpl(this._self, this._then);
+
+  final _AppAccount _self;
+  final $Res Function(_AppAccount) _then;
+
+/// Create a copy of AppAccount
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? shortName = null,Object? serviceName = null,Object? genesisAddress = null,}) {
+  return _then(_AppAccount(
+shortName: null == shortName ? _self.shortName : shortName // ignore: cast_nullable_to_non_nullable
+as String,serviceName: null == serviceName ? _self.serviceName : serviceName // ignore: cast_nullable_to_non_nullable
+as String,genesisAddress: null == genesisAddress ? _self.genesisAddress : genesisAddress // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$GetAccountsResult {
-  List<AppAccount> get accounts => throw _privateConstructorUsedError;
+
+ List<AppAccount> get accounts;
+/// Create a copy of GetAccountsResult
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GetAccountsResultCopyWith<GetAccountsResult> get copyWith => _$GetAccountsResultCopyWithImpl<GetAccountsResult>(this as GetAccountsResult, _$identity);
 
   /// Serializes this GetAccountsResult to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of GetAccountsResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $GetAccountsResultCopyWith<GetAccountsResult> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetAccountsResult&&const DeepCollectionEquality().equals(other.accounts, accounts));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(accounts));
+
+@override
+String toString() {
+  return 'GetAccountsResult(accounts: $accounts)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $GetAccountsResultCopyWith<$Res> {
-  factory $GetAccountsResultCopyWith(
-          GetAccountsResult value, $Res Function(GetAccountsResult) then) =
-      _$GetAccountsResultCopyWithImpl<$Res, GetAccountsResult>;
-  @useResult
-  $Res call({List<AppAccount> accounts});
-}
+abstract mixin class $GetAccountsResultCopyWith<$Res>  {
+  factory $GetAccountsResultCopyWith(GetAccountsResult value, $Res Function(GetAccountsResult) _then) = _$GetAccountsResultCopyWithImpl;
+@useResult
+$Res call({
+ List<AppAccount> accounts
+});
 
+
+
+
+}
 /// @nodoc
-class _$GetAccountsResultCopyWithImpl<$Res, $Val extends GetAccountsResult>
+class _$GetAccountsResultCopyWithImpl<$Res>
     implements $GetAccountsResultCopyWith<$Res> {
-  _$GetAccountsResultCopyWithImpl(this._value, this._then);
+  _$GetAccountsResultCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final GetAccountsResult _self;
+  final $Res Function(GetAccountsResult) _then;
 
-  /// Create a copy of GetAccountsResult
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? accounts = null,
-  }) {
-    return _then(_value.copyWith(
-      accounts: null == accounts
-          ? _value.accounts
-          : accounts // ignore: cast_nullable_to_non_nullable
-              as List<AppAccount>,
-    ) as $Val);
-  }
+/// Create a copy of GetAccountsResult
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? accounts = null,}) {
+  return _then(_self.copyWith(
+accounts: null == accounts ? _self.accounts : accounts // ignore: cast_nullable_to_non_nullable
+as List<AppAccount>,
+  ));
 }
 
-/// @nodoc
-abstract class _$$GetAccountsResultImplCopyWith<$Res>
-    implements $GetAccountsResultCopyWith<$Res> {
-  factory _$$GetAccountsResultImplCopyWith(_$GetAccountsResultImpl value,
-          $Res Function(_$GetAccountsResultImpl) then) =
-      __$$GetAccountsResultImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<AppAccount> accounts});
 }
 
-/// @nodoc
-class __$$GetAccountsResultImplCopyWithImpl<$Res>
-    extends _$GetAccountsResultCopyWithImpl<$Res, _$GetAccountsResultImpl>
-    implements _$$GetAccountsResultImplCopyWith<$Res> {
-  __$$GetAccountsResultImplCopyWithImpl(_$GetAccountsResultImpl _value,
-      $Res Function(_$GetAccountsResultImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of GetAccountsResult
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? accounts = null,
-  }) {
-    return _then(_$GetAccountsResultImpl(
-      accounts: null == accounts
-          ? _value._accounts
-          : accounts // ignore: cast_nullable_to_non_nullable
-              as List<AppAccount>,
-    ));
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$GetAccountsResultImpl extends _GetAccountsResult {
-  const _$GetAccountsResultImpl({required final List<AppAccount> accounts})
-      : _accounts = accounts,
-        super._();
 
-  factory _$GetAccountsResultImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GetAccountsResultImplFromJson(json);
+class _GetAccountsResult extends GetAccountsResult {
+  const _GetAccountsResult({required final  List<AppAccount> accounts}): _accounts = accounts,super._();
+  factory _GetAccountsResult.fromJson(Map<String, dynamic> json) => _$GetAccountsResultFromJson(json);
 
-  final List<AppAccount> _accounts;
-  @override
-  List<AppAccount> get accounts {
-    if (_accounts is EqualUnmodifiableListView) return _accounts;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_accounts);
-  }
-
-  @override
-  String toString() {
-    return 'GetAccountsResult(accounts: $accounts)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetAccountsResultImpl &&
-            const DeepCollectionEquality().equals(other._accounts, _accounts));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_accounts));
-
-  /// Create a copy of GetAccountsResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetAccountsResultImplCopyWith<_$GetAccountsResultImpl> get copyWith =>
-      __$$GetAccountsResultImplCopyWithImpl<_$GetAccountsResultImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GetAccountsResultImplToJson(
-      this,
-    );
-  }
+ final  List<AppAccount> _accounts;
+@override List<AppAccount> get accounts {
+  if (_accounts is EqualUnmodifiableListView) return _accounts;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_accounts);
 }
 
-abstract class _GetAccountsResult extends GetAccountsResult {
-  const factory _GetAccountsResult({required final List<AppAccount> accounts}) =
-      _$GetAccountsResultImpl;
-  const _GetAccountsResult._() : super._();
 
-  factory _GetAccountsResult.fromJson(Map<String, dynamic> json) =
-      _$GetAccountsResultImpl.fromJson;
+/// Create a copy of GetAccountsResult
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GetAccountsResultCopyWith<_GetAccountsResult> get copyWith => __$GetAccountsResultCopyWithImpl<_GetAccountsResult>(this, _$identity);
 
-  @override
-  List<AppAccount> get accounts;
-
-  /// Create a copy of GetAccountsResult
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetAccountsResultImplCopyWith<_$GetAccountsResultImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$GetAccountsResultToJson(this, );
 }
 
-GetAccountsRequest _$GetAccountsRequestFromJson(Map<String, dynamic> json) {
-  return _GetAccountsRequest.fromJson(json);
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetAccountsResult&&const DeepCollectionEquality().equals(other._accounts, _accounts));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_accounts));
+
+@override
+String toString() {
+  return 'GetAccountsResult(accounts: $accounts)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$GetAccountsResultCopyWith<$Res> implements $GetAccountsResultCopyWith<$Res> {
+  factory _$GetAccountsResultCopyWith(_GetAccountsResult value, $Res Function(_GetAccountsResult) _then) = __$GetAccountsResultCopyWithImpl;
+@override @useResult
+$Res call({
+ List<AppAccount> accounts
+});
+
+
+
+
+}
+/// @nodoc
+class __$GetAccountsResultCopyWithImpl<$Res>
+    implements _$GetAccountsResultCopyWith<$Res> {
+  __$GetAccountsResultCopyWithImpl(this._self, this._then);
+
+  final _GetAccountsResult _self;
+  final $Res Function(_GetAccountsResult) _then;
+
+/// Create a copy of GetAccountsResult
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? accounts = null,}) {
+  return _then(_GetAccountsResult(
+accounts: null == accounts ? _self._accounts : accounts // ignore: cast_nullable_to_non_nullable
+as List<AppAccount>,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$GetAccountsRequest {
+
+
+
   /// Serializes this GetAccountsRequest to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetAccountsRequest);
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'GetAccountsRequest()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $GetAccountsRequestCopyWith<$Res> {
-  factory $GetAccountsRequestCopyWith(
-          GetAccountsRequest value, $Res Function(GetAccountsRequest) then) =
-      _$GetAccountsRequestCopyWithImpl<$Res, GetAccountsRequest>;
+class $GetAccountsRequestCopyWith<$Res>  {
+$GetAccountsRequestCopyWith(GetAccountsRequest _, $Res Function(GetAccountsRequest) __);
 }
 
-/// @nodoc
-class _$GetAccountsRequestCopyWithImpl<$Res, $Val extends GetAccountsRequest>
-    implements $GetAccountsRequestCopyWith<$Res> {
-  _$GetAccountsRequestCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of GetAccountsRequest
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$GetAccountsRequestImplCopyWith<$Res> {
-  factory _$$GetAccountsRequestImplCopyWith(_$GetAccountsRequestImpl value,
-          $Res Function(_$GetAccountsRequestImpl) then) =
-      __$$GetAccountsRequestImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetAccountsRequestImplCopyWithImpl<$Res>
-    extends _$GetAccountsRequestCopyWithImpl<$Res, _$GetAccountsRequestImpl>
-    implements _$$GetAccountsRequestImplCopyWith<$Res> {
-  __$$GetAccountsRequestImplCopyWithImpl(_$GetAccountsRequestImpl _value,
-      $Res Function(_$GetAccountsRequestImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of GetAccountsRequest
-  /// with the given fields replaced by the non-null parameter values.
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$GetAccountsRequestImpl extends _GetAccountsRequest {
-  const _$GetAccountsRequestImpl() : super._();
 
-  factory _$GetAccountsRequestImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GetAccountsRequestImplFromJson(json);
+class _GetAccountsRequest extends GetAccountsRequest {
+  const _GetAccountsRequest(): super._();
+  factory _GetAccountsRequest.fromJson(Map<String, dynamic> json) => _$GetAccountsRequestFromJson(json);
 
-  @override
-  String toString() {
-    return 'GetAccountsRequest()';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetAccountsRequestImpl);
-  }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GetAccountsRequestImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$GetAccountsRequestToJson(this, );
 }
 
-abstract class _GetAccountsRequest extends GetAccountsRequest {
-  const factory _GetAccountsRequest() = _$GetAccountsRequestImpl;
-  const _GetAccountsRequest._() : super._();
-
-  factory _GetAccountsRequest.fromJson(Map<String, dynamic> json) =
-      _$GetAccountsRequestImpl.fromJson;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetAccountsRequest);
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'GetAccountsRequest()';
+}
+
+
+}
+
+
+
+
+// dart format on

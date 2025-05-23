@@ -6,26 +6,26 @@ part of 'get_current_account.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GetCurrentAccountResultImpl _$$GetCurrentAccountResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$GetCurrentAccountResultImpl(
-      shortName: json['shortName'] as String,
-      serviceName: json['serviceName'] as String,
-      genesisAddress: json['genesisAddress'] as String,
-    );
+_GetCurrentAccountResult _$GetCurrentAccountResultFromJson(
+  Map<String, dynamic> json,
+) => _GetCurrentAccountResult(
+  shortName: json['shortName'] as String,
+  serviceName: json['serviceName'] as String,
+  genesisAddress: json['genesisAddress'] as String,
+);
 
-Map<String, dynamic> _$$GetCurrentAccountResultImplToJson(
-        _$GetCurrentAccountResultImpl instance) =>
-    <String, dynamic>{
-      'shortName': instance.shortName,
-      'serviceName': instance.serviceName,
-      'genesisAddress': instance.genesisAddress,
-    };
+Map<String, dynamic> _$GetCurrentAccountResultToJson(
+  _GetCurrentAccountResult instance,
+) => <String, dynamic>{
+  'shortName': instance.shortName,
+  'serviceName': instance.serviceName,
+  'genesisAddress': instance.genesisAddress,
+};
 
-_$GetCurrentAccountRequestImpl _$$GetCurrentAccountRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$GetCurrentAccountRequestImpl();
+_GetCurrentAccountRequest _$GetCurrentAccountRequestFromJson(
+  Map<String, dynamic> json,
+) => _GetCurrentAccountRequest();
 
-Map<String, dynamic> _$$GetCurrentAccountRequestImplToJson(
-        _$GetCurrentAccountRequestImpl instance) =>
-    <String, dynamic>{};
+Map<String, dynamic> _$GetCurrentAccountRequestToJson(
+  _GetCurrentAccountRequest instance,
+) => <String, dynamic>{};

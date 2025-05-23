@@ -1,4 +1,5 @@
 @JS()
+// ignore: unnecessary_library_name
 library awc;
 
 import 'dart:async';
@@ -14,7 +15,7 @@ external MessagePort? get awc;
 external bool? get awcAvailable;
 
 @JS('onAWCReady')
-external set onAWCReady(JSFunction f);
+external set onAWCReady(final JSFunction f);
 
 final _logger = Logger('AWC-StreamChannel-MessageChannel-JS');
 
@@ -27,10 +28,11 @@ Future<MessagePort> get asyncAWC async {
   _logger.info('Wait for AWC');
   final awcReadyCompleter = Completer<MessagePort>();
 
-  onAWCReady = (port) {
-    awcReadyCompleter.complete(port as MessagePort);
-    _logger.info('AWC ready !');
-  } as JSFunction;
+  onAWCReady =
+      ((final JSAny? port) {
+        awcReadyCompleter.complete(port! as MessagePort);
+        _logger.info('AWC ready !');
+      }).toJS;
 
   // Handle potential timeout or error (optional)
   await Future.delayed(const Duration(seconds: 5), () {

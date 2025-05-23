@@ -6,53 +6,47 @@ part of 'account_sub.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AccountBalanceImpl _$$AccountBalanceImplFromJson(Map<String, dynamic> json) =>
-    _$AccountBalanceImpl(
+_AccountBalance _$AccountBalanceFromJson(Map<String, dynamic> json) =>
+    _AccountBalance(
       nativeTokenName: json['nativeTokenName'] as String,
       nativeTokenValue: (json['nativeTokenValue'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$AccountBalanceImplToJson(
-        _$AccountBalanceImpl instance) =>
+Map<String, dynamic> _$AccountBalanceToJson(_AccountBalance instance) =>
     <String, dynamic>{
       'nativeTokenName': instance.nativeTokenName,
       'nativeTokenValue': instance.nativeTokenValue,
     };
 
-_$AccountImpl _$$AccountImplFromJson(Map<String, dynamic> json) =>
-    _$AccountImpl(
-      name: json['name'] as String,
-      genesisAddress: json['genesisAddress'] as String,
-      lastAddress: json['lastAddress'] as String?,
-      balance: json['balance'] == null
+_Account _$AccountFromJson(Map<String, dynamic> json) => _Account(
+  name: json['name'] as String,
+  genesisAddress: json['genesisAddress'] as String,
+  lastAddress: json['lastAddress'] as String?,
+  balance:
+      json['balance'] == null
           ? null
           : AccountBalance.fromJson(json['balance'] as Map<String, dynamic>),
-    );
+);
 
-Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'genesisAddress': instance.genesisAddress,
-      'lastAddress': instance.lastAddress,
-      'balance': instance.balance,
-    };
+Map<String, dynamic> _$AccountToJson(_Account instance) => <String, dynamic>{
+  'name': instance.name,
+  'genesisAddress': instance.genesisAddress,
+  'lastAddress': instance.lastAddress,
+  'balance': instance.balance,
+};
 
-_$SubscribeAccountRequestImpl _$$SubscribeAccountRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SubscribeAccountRequestImpl(
-      serviceName: json['serviceName'] as String,
-    );
+_SubscribeAccountRequest _$SubscribeAccountRequestFromJson(
+  Map<String, dynamic> json,
+) => _SubscribeAccountRequest(serviceName: json['serviceName'] as String);
 
-Map<String, dynamic> _$$SubscribeAccountRequestImplToJson(
-        _$SubscribeAccountRequestImpl instance) =>
-    <String, dynamic>{
-      'serviceName': instance.serviceName,
-    };
+Map<String, dynamic> _$SubscribeAccountRequestToJson(
+  _SubscribeAccountRequest instance,
+) => <String, dynamic>{'serviceName': instance.serviceName};
 
-_$SubscribeCurrentAccountRequestImpl
-    _$$SubscribeCurrentAccountRequestImplFromJson(Map<String, dynamic> json) =>
-        _$SubscribeCurrentAccountRequestImpl();
+_SubscribeCurrentAccountRequest _$SubscribeCurrentAccountRequestFromJson(
+  Map<String, dynamic> json,
+) => _SubscribeCurrentAccountRequest();
 
-Map<String, dynamic> _$$SubscribeCurrentAccountRequestImplToJson(
-        _$SubscribeCurrentAccountRequestImpl instance) =>
-    <String, dynamic>{};
+Map<String, dynamic> _$SubscribeCurrentAccountRequestToJson(
+  _SubscribeCurrentAccountRequest instance,
+) => <String, dynamic>{};

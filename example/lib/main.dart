@@ -27,14 +27,14 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Archethic Wallet Client Demo',
       home: Scaffold(
         body: MainScreen(aewalletClient: _aewalletClient),
       ),
-      onGenerateRoute: (settings) {
+      onGenerateRoute: (final settings) {
         if ((_aewalletClient as DeeplinkArchethicDappClient)
             .handleRoute(settings.name)) {
           return;
