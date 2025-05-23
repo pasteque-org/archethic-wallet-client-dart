@@ -36,7 +36,7 @@ class WebBrowserExtensionStreamChannel
   WebBrowserExtensionStreamChannel({required this.streamChannel}) {
     _onPostMessageSubscription = _out.stream.listen((final event) async {
       _logger.info('[WBE] send command $event');
-      await streamChannel.send(event as JSString).toDart;
+      await streamChannel.send(event.toJS).toDart;
       _logger.info('[WBE] send command Done');
     });
   }

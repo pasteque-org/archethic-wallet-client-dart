@@ -132,7 +132,7 @@ class _SignPayloadsTabState extends State<SignPayloadsTab> {
                     }
                   },
                 );
-              } catch (e) {
+              } on Exception catch (e) {
                 if (!context.mounted) {
                   return;
                 }

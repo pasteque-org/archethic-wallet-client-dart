@@ -23,7 +23,7 @@ class MessageChannelArchethicDappClient extends AWCJsonRPCClient
         },
       );
 
-  static bool get isAvailable => kIsWeb && awcAvailable == true;
+  static bool get isAvailable => kIsWeb && (awcAvailable ?? false);
 }
 
 class MessagePortStreamChannel
@@ -32,11 +32,11 @@ class MessagePortStreamChannel
   MessagePortStreamChannel({required this.port}) {
     port.onmessage =
         (final MessageEvent message) {
-          _in.add(message.data! as String);
+          _in.add((message.data! as JSString).toDart);
         }.toJS;
 
     _onPostMessageSubscription = _out.stream.listen((final event) {
-      port.postMessage(event as JSAny?);
+      port.postMessage(event.toJS);
     });
   }
 

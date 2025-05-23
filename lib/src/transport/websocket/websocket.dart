@@ -8,7 +8,9 @@ class WebsocketArchethicDappClient extends AWCJsonRPCClient
           final socket = await _channelBuildAndConnect();
           return socket.cast<String>();
         },
-        disposeChannel: (final channel) {},
+        disposeChannel: (final channel) {
+          return null;
+        },
       );
 
   static Future<WebSocketChannel> _channelBuildAndConnect() async {

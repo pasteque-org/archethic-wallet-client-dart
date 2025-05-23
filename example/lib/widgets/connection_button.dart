@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 class ConnectionButton extends StatefulWidget {
   const ConnectionButton({
-    super.key,
     required this.aewalletClient,
+    super.key,
   });
 
   final ArchethicDAppClient aewalletClient;
@@ -34,8 +34,8 @@ class _ConnectionButtonState extends State<ConnectionButton> {
   }
 
   @override
-  void dispose() {
-    _connectionStateSubscription?.cancel();
+  Future<void> dispose() async {
+    await _connectionStateSubscription?.cancel();
     super.dispose();
   }
 
@@ -63,8 +63,8 @@ class _ConnectionButtonState extends State<ConnectionButton> {
     }
     if (connectionState == const ArchethicDappConnectionState.disconnected()) {
       return OutlinedButton(
-        onPressed: () {
-          widget.aewalletClient.connect();
+        onPressed: () async {
+          await widget.aewalletClient.connect();
         },
         child: Row(
           children: [
@@ -89,8 +89,8 @@ class _ConnectionButtonState extends State<ConnectionButton> {
     }
 
     return OutlinedButton(
-      onPressed: () {
-        widget.aewalletClient.close();
+      onPressed: () async {
+        await widget.aewalletClient.close();
       },
       child: Row(
         children: [

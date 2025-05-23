@@ -1,3 +1,5 @@
+// ignore_for_file: discarded_futures
+
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +38,10 @@ class GetAccountsTab extends StatelessWidget {
                 },
               );
             },
-            failure: (final failure) => Text('Request failed : $failure'),
+            failure: (final failure) => SelectableText(
+              'Request failed : $failure',
+              style: textTheme.bodyMedium,
+            ),
           ),
         );
       },

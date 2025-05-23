@@ -105,6 +105,7 @@ class NavigationDrawerSection extends StatefulWidget {
 }
 
 class _NavigationDrawerSectionState extends State<NavigationDrawerSection> {
+  // ignore: type_annotate_public_apis
   var navDrawerIndex = 0;
 
   @override

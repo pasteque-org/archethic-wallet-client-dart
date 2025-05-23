@@ -31,7 +31,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int navDrawerIndex = 0;
+  // ignore: type_annotate_public_apis
+  var navDrawerIndex = 0;
   void _onDestinationSelected(final int selectedIndex) {
     setState(() {
       navDrawerIndex = selectedIndex;

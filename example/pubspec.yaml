@@ -29,6 +29,9 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  archethic_lib_dart:
+    path: ../../libdart
+
   archethic_wallet_client:
     path: ../
 

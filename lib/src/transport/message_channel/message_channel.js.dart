@@ -29,11 +29,10 @@ Future<MessagePort> get asyncAWC async {
   final awcReadyCompleter = Completer<MessagePort>();
 
   onAWCReady =
-      (final port) {
-            awcReadyCompleter.complete(port as MessagePort);
-            _logger.info('AWC ready !');
-          }
-          as JSFunction;
+      ((final JSAny? port) {
+        awcReadyCompleter.complete(port! as MessagePort);
+        _logger.info('AWC ready !');
+      }).toJS;
 
   // Handle potential timeout or error (optional)
   await Future.delayed(const Duration(seconds: 5), () {

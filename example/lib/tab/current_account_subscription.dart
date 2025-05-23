@@ -1,3 +1,5 @@
+// ignore_for_file: discarded_futures
+
 import 'dart:async';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';

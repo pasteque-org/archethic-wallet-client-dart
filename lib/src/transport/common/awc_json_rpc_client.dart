@@ -10,7 +10,7 @@ abstract class AWCJsonRPCClient extends ArchethicDAppClient {
   @override
   final RequestOrigin origin;
   final FutureOr<StreamChannel<String>> Function() channelBuilder;
-  final FutureOr<void> Function(StreamChannel<String> channel) disposeChannel;
+  final Future<void>? Function(StreamChannel<String> channel) disposeChannel;
 
   Peer? _client;
   StreamChannel<String>? _channel;

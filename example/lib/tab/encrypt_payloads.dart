@@ -174,7 +174,7 @@ class _EncryptPayloadsTabState extends State<EncryptPayloadsTab> {
                     );
                   },
                 );
-              } catch (e) {
+              } on Exception catch (e) {
                 if (!context.mounted) {
                   return;
                 }
