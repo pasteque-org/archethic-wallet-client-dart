@@ -1,6 +1,16 @@
 part of '../archethic_wallet_client.dart';
 
+/// An implementation of [ArchethicDAppClient] that uses deeplinks for communication
+/// with the Archethic Wallet mobile application.
+///
+/// This client is primarily intended for mobile platforms (Android and iOS) where
+/// deeplink RPC is available.
 class DeeplinkArchethicDappClient extends ArchethicDAppClient {
+  /// Creates a [DeeplinkArchethicDappClient] instance.
+  ///
+  /// [origin] specifies the [RequestOrigin] of the DApp making the requests.
+  /// [replyBaseUrl] is the base URL that the Archethic Wallet will use to send
+  /// responses back to this DApp via deeplink.
   DeeplinkArchethicDappClient({
     required this.origin,
     required this.replyBaseUrl,
@@ -9,9 +19,18 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   final _deeplinkRpcClient = DeeplinkRpcClient();
   final _state = const ArchethicDappConnectionState.connected();
 
+  /// The base URL for deeplink responses from the wallet to this DApp.
+  /// Example: `flutterdappexample://dapp.example`
   final String replyBaseUrl;
+
+  /// The base URL for deeplink requests from this DApp to the Archethic Wallet.
   static const requestBaseUrl = 'aewallet://archethic.tech';
 
+  /// Checks if the Archethic Wallet is likely available to handle deeplink requests.
+  ///
+  /// - On mobile platforms (Android/iOS), it attempts to query if the `aewallet://` scheme can be launched.
+  /// - On Web, it assumes availability as direct checking is not possible.
+  /// - Returns `false` for non-mobile and non-web platforms.
   static Future<bool> get isAvailable async {
     final isMobileOS =
         defaultTargetPlatform == TargetPlatform.android ||
@@ -37,6 +56,12 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   @override
   final RequestOrigin origin;
 
+  /// Handles an incoming deeplink URL string.
+  ///
+  /// This method should be called when the application receives a deeplink.
+  /// It passes the URL to the underlying [DeeplinkRpcClient] to process
+  /// potential responses from the Archethic Wallet.
+  /// Returns `true` if the deeplink was handled as an RPC response, `false` otherwise.
   bool handleRoute(final String? path) =>
       _deeplinkRpcClient.handleResponse(path);
 
@@ -45,22 +70,33 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
 
   @override
   Stream<ArchethicDappConnectionState> get connectionStateStream async* {
+    // For deeplink, the connection is considered always active if the wallet is available.
+    // There isn't a persistent connection to maintain or monitor in the same way as a websocket.
     yield const ArchethicDappConnectionState.connected();
   }
 
   @override
   Future<void> connect() async {
+    // No explicit connection step is required for deeplink communication.
+    // Availability is checked via `isAvailable`.
     return;
   }
 
   @override
   Future<void> close() async {
+    // No explicit disconnection step is required for deeplink communication.
     return;
   }
 
-  /// [requiresUserInteraction] will determine the timeout duration :
-  /// if no interaction is required, timeout will be short.
-  Future<DeeplinkRpcResponse> _send({
+  /// Sends a request to the Archethic Wallet via deeplink.
+  ///
+  /// [requestEndpoint] is the specific RPC method path (e.g., 'get_endpoint').
+  /// [replyEndpoint] is the path the wallet will use in the reply deeplink.
+  /// [requiresUserInteraction] indicates if the operation requires user confirmation in the wallet.
+  /// This affects the timeout duration for the request.
+  /// [params] are the parameters for the RPC request.
+  Future<DeeplinkRpcResponse>
+  _send({
     required final String requestEndpoint,
     required final String replyEndpoint,
     required final bool requiresUserInteraction,
@@ -75,6 +111,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
                   Request(version: 1, origin: origin, payload: params).toJson(),
             ),
           )
+          // Use a shorter timeout for requests not requiring user interaction (e.g., status checks)
           : _deeplinkRpcClient.send(
             request: DeeplinkRpcRequest(
               requestUrl: '$requestBaseUrl/$requestEndpoint',
@@ -84,6 +121,16 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
             ),
             timeout: const Duration(seconds: 5),
           );
+
+  //============================================================================
+  // RPC Method Implementations
+  //============================================================================
+  // Each method implementation follows a similar pattern:
+  // 1. Call `_send` with appropriate request/reply endpoints and parameters.
+  // 2. Map the `DeeplinkRpcResponse` to a `Result<SuccessType, Failure>`.
+  //    - On success, parse the JSON response into the expected result type.
+  //    - On failure, convert the `DeeplinkRpcFailure` to a client `Failure`.
+  //============================================================================
 
   @override
   Future<Result<GetEndpointResult, Failure>> getEndpoint() => _send(
@@ -115,8 +162,9 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
               Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
       success:
           (final success) => Result.success(
+            // Assuming RefreshCurrentAccountResponse.fromJson can handle an empty map or specific structure
             RefreshCurrentAccountResponse.fromJson(
-              success as Map<String, dynamic>,
+              success as Map<String, dynamic>? ?? {},
             ),
           ),
     ),
@@ -179,18 +227,29 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   @override
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
     final String accountName,
-  ) async => const Result.failure(Failure.unsupportedMethod);
+  ) async {
+    // Subscriptions are not supported over deeplink due to its stateless nature.
+    return const Result.failure(Failure.unsupportedMethod);
+  }
 
   @override
-  Future<void> unsubscribeAccount(final String subscriptionId) async {}
+  Future<void> unsubscribeAccount(final String subscriptionId) async {
+    // Subscriptions are not supported, so unsubscribe is a no-op.
+    return;
+  }
 
   @override
   Future<Result<Subscription<Account>, Failure>>
-  subscribeCurrentAccount() async =>
-      const Result.failure(Failure.unsupportedMethod);
+  subscribeCurrentAccount() async {
+    // Subscriptions are not supported over deeplink.
+    return const Result.failure(Failure.unsupportedMethod);
+  }
 
   @override
-  Future<void> unsubscribeCurrentAccount(final String subscriptionId) async {}
+  Future<void> unsubscribeCurrentAccount(final String subscriptionId) async {
+    // Subscriptions are not supported, so unsubscribe is a no-op.
+    return;
+  }
 
   @override
   Future<Result<SendTransactionResult, Failure>> addService(
@@ -256,7 +315,8 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   Future<Result<KeychainDeriveKeypairResult, Failure>> keychainDeriveKeyPair(
     final KeychainDeriveKeypairRequest data,
   ) => _send(
-    requiresUserInteraction: false,
+    requiresUserInteraction:
+        false, // Deriving a keypair might not need UI confirmation
     requestEndpoint: 'keychain_derive_keypair',
     replyEndpoint: 'keychain_derive_keypair_result',
     params: data.toJson(),
@@ -278,7 +338,8 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   Future<Result<KeychainDeriveAddressResult, Failure>> keychainDeriveAddress(
     final KeychainDeriveAddressRequest data,
   ) => _send(
-    requiresUserInteraction: false,
+    requiresUserInteraction:
+        false, // Deriving an address might not need UI confirmation
     requestEndpoint: 'keychain_derive_address',
     replyEndpoint: 'keychain_derive_address_result',
     params: data.toJson(),
@@ -340,7 +401,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   Future<Result<EncryptPayloadsResult, Failure>> encryptPayloads(
     final EncryptPayloadRequest data,
   ) => _send(
-    requiresUserInteraction: false,
+    requiresUserInteraction: true, // Encryption might involve user keys
     requestEndpoint: 'encrypt_payloads',
     replyEndpoint: 'encrypt_payloads_result',
     params: data.toJson(),
